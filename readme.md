@@ -1,5 +1,22 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+# A Next.js e-commerce store with following features
+* Product listing
+* Cart
+* Checkout with stripe payment gateway
+
+## Development features
+* App router
+* Zustand state management
+* React query 
+* Supabase - Auth, Users, products, carts 
+* Stripe Integration
+* Vitest test cases
+* Playwright test cases
+* Docker image
+* CI/CD pipeline (probably Github Actions)
+* SEO work on SSR pages
+
 ## Getting Started
 
 First, run the development server:
