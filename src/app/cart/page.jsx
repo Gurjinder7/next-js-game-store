@@ -4,11 +4,29 @@
 //     description:'cart'
 // }
 
+import useAppStore from "../../../store";
+import {Suspense} from "react";
+import CartItem from "../components/Cart";
+
 export const CartPage = () => {
+
+    const {products} = useAppStore()
+
+    console.log(products)
     return (
-        <>
-            Cart
-        </>
+        <div className="flex p-3 justify-center items-center">
+            <div>
+                <Suspense fallback={<div>Loading...</div>}>
+                    {products.map((product) => (
+                        <CartItem game={product} key={product.id} />
+                    ))}
+                </Suspense>
+            </div>
+            <div>
+
+            </div>
+
+        </div>
     )
 }
 export default CartPage

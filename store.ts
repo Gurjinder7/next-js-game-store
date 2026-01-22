@@ -11,11 +11,9 @@ const useAppStore = create((set) => ({
         set((state:IState) => ({products: [...state.products, product]}));
 
     },
-    removeProduct: (product: IProduct) => ({
-        set(state:IState) {
-            state.products = state.products.filter(product => product.id !== product.id)
-        }
-    })
+    removeProduct: (product: IProduct) => {
+        set((state:IState) => ({products: state.products.filter((i) => i.id !== product.id)}));
+    }
 
 }));
 

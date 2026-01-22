@@ -40,6 +40,7 @@ export default async function Home() {
             <div className="flex justify-between items-center gap-10 flex-wrap p-5">
 
             {products?.map((product: IProduct) => (
+
                 <ProductCard product={product} key={product.id} />
             ))}
 

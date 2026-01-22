@@ -8,7 +8,6 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 ## Development features
 * App router
 * Zustand state management
-* React query 
 * Supabase - Auth, Users, products, carts 
 * Stripe Integration
 * Vitest test cases

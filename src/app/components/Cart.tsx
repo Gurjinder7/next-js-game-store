@@ -1,0 +1,29 @@
+import useAppStore from "../../../store";
+import {IProduct} from "@/utils/interface/product";
+
+const CartItem = ({game}:{game:IProduct}) => {
+
+    const { removeProduct } = useAppStore();
+
+    const removeFromCart = () => {
+        removeProduct(game);
+    }
+
+    return (
+        <div className="flex items-center p-3 bg-white my-3">
+            <div>
+                <img src={game?.thumbnail} className="w-1/3 h-1/3" alt="thumbnail"/>
+            </div>
+            <div className="flex flex-col w-full text-black text-xl font-semibold">
+            <p>{game?.name}</p>
+            <p>${game?.price}</p>
+                <div className="flex justify-end">
+                    <button className="bg-red-700 text-white p-2 text-xs hover:bg-red-600 cursor-pointer" onClick={removeFromCart}>Remove</button>
+                </div>
+            </div>
+
+        </div>
+    )
+}
+
+export default CartItem;

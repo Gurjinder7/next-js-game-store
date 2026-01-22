@@ -1,9 +1,8 @@
 "use client"
 
 import {IProduct} from "@/utils/interface/product";
-// import {useStore} from "zustand/react";
 import useAppStore from "../../../store";
-import {useEffect} from "react";
+import Link from "next/link";
 
 export const ProductCard = ({product}:{product:IProduct}) => {
     const {name, id, genre, price, year, thumbnail} = product;
@@ -15,17 +14,19 @@ export const ProductCard = ({product}:{product:IProduct}) => {
         addProduct(product)
     }
 
-    useEffect(() => {
-        console.log(products)
-    })
-
     console.log(products)
     return (
-        <div className="flex flex-col p-4 min-w-2xs max-w-3xl m-3 bg-white">
-            <img src={thumbnail} className="" alt={name}/>
-            <h3 className="text-2xl text-center text-black">{name}</h3>
-            <p className="text-2xl font-bold text-center text-black">${price}</p>
-            <button className="bg-amber-700 text-white py-2 hover:bg-amber-600 hover:cursor-pointer" onClick={addToCart}>Add to Cart</button>
-        </div>
+            <div className="flex flex-col p-4 min-w-2xs max-w-3xl m-3 bg-white">
+                <img src={thumbnail} className="" alt={name}/>
+                <h3 className="text-2xl text-center text-black">{name}</h3>
+                <p className="text-2xl font-bold text-center text-black">${price}</p>
+                <button className="bg-amber-700 text-white py-2 my-2 hover:bg-amber-600 hover:cursor-pointer" onClick={addToCart}>Add to Cart</button>
+                <Link href={`/games/${id}`} >
+                <button className="bg-cyan-700 w-full text-white py-2 hover:bg-cyan-600 hover:cursor-pointer" onClick={addToCart}>See details</button>
+                </Link>
+
+            </div>
+
+
     )
 }
