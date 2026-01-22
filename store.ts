@@ -8,6 +8,7 @@ const useAppStore = create((set) => ({
     setAuthenticated: (status: boolean) => set((state:IState) => ({authenticated: status})),
     addProduct: (product: IProduct) => {
         console.log(product);
+
         set((state:IState) => ({products: [...state.products, product]}));
 
     },

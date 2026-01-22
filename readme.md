@@ -16,6 +16,14 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 * CI/CD pipeline (probably Github Actions)
 * SEO work on SSR pages
 
+### UI Features
+* Checkout without login
+* Login checkout
+  * User cart saved on Supabase
+  * User cart retrieved on login
+  * User order saved on Supabase
+  * User order listed on account section
+* One quantity per item
 ## Getting Started
 
 First, run the development server:

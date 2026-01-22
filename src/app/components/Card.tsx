@@ -11,6 +11,12 @@ export const ProductCard = ({product}:{product:IProduct}) => {
 
     const addToCart = () => {
         console.log("addToCart")
+        products.map((game: IProduct)=>{
+            if(product.id === game.id){
+                alert("Already added to cart")
+                return;
+            }
+        })
         addProduct(product)
     }
 
@@ -22,7 +28,7 @@ export const ProductCard = ({product}:{product:IProduct}) => {
                 <p className="text-2xl font-bold text-center text-black">${price}</p>
                 <button className="bg-amber-700 text-white py-2 my-2 hover:bg-amber-600 hover:cursor-pointer" onClick={addToCart}>Add to Cart</button>
                 <Link href={`/games/${id}`} >
-                <button className="bg-cyan-700 w-full text-white py-2 hover:bg-cyan-600 hover:cursor-pointer" onClick={addToCart}>See details</button>
+                <button className="bg-cyan-700 w-full text-white py-2 hover:bg-cyan-600 hover:cursor-pointer" >See details</button>
                 </Link>
 
             </div>

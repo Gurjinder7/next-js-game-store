@@ -16,6 +16,12 @@ export const CartPage = () => {
     return (
         <div className="flex p-3 justify-center items-center">
             <div>
+                {products && products.length === 0 && (
+                    <div className="text-center text-2xl flex flex-col items-center">
+                        <img src="/emptyCart.png" alt=""/>
+                        <p className="pl-[15%]">Your cart is empty!</p>
+                    </div>
+                )}
                 <Suspense fallback={<div>Loading...</div>}>
                     {products.map((product) => (
                         <CartItem game={product} key={product.id} />
