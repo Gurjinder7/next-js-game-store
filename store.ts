@@ -5,6 +5,7 @@ import {IState} from "@/utils/interface/State";
 const useAppStore = create((set) => ({
     products:[],
     authenticated: false,
+    user: null,
     loginDialog: false,
     setAuthenticated: (status: boolean) => set((state:IState) => ({authenticated: status})),
     addProduct: (product: IProduct) => {
@@ -17,6 +18,8 @@ const useAppStore = create((set) => ({
         set((state:IState) => ({products: state.products.filter((i) => i.id !== product.id)}));
     },
     toggleLoginDialog: (status:boolean) => set((state:IState) => ({loginDialog: status})),
+    setUser: (user) => set((state:IState) => ({user: user})),
+    clearData: () => set((state:IState) => ({user: null, products: [], authenticated: false})),
 
 
 }));
