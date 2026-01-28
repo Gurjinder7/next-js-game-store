@@ -7,6 +7,7 @@
 import useAppStore from "../../../store";
 import {Activity, Suspense, useEffect, useState} from "react";
 import CartItem from "../components/Cart";
+import Link from "next/link";
 
 export const CartPage = () => {
     const [total, setTotal] = useState(0);
@@ -57,7 +58,7 @@ export const CartPage = () => {
                 </p>
                 <div className="flex justify-center py-3">
                     <Activity mode={products.length > 0 ? 'visible' : 'hidden' } >
-                        <button className="bg-cyan-500 p-3">Go to Checkout</button>
+                        <Link href="/checkout" className="bg-cyan-500 p-3">Go to Checkout</Link>
 
                     </Activity>
                 </div>
