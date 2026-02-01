@@ -36,7 +36,10 @@ export const updateSession = async (request: NextRequest) => {
 
     const user = await supabase.auth.getUser()
 
-    if (request.nextUrl.pathname.startsWith('/orders') && user.error) {
+    if ((
+        request.nextUrl.pathname.startsWith('/orders')
+        || request.nextUrl.pathname.startsWith('/checkout')
+    ) && user.error) {
         return NextResponse.redirect(new URL('/', request.url))
     }
     return supabaseResponse

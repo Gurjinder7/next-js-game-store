@@ -45,21 +45,23 @@ const Header = () => {
 
     return (
         <>
-            <nav className="p-3 navbar navbar-expand-lg navbar-dark bg-dark h-[8vh] flex justify-between bg-amber-700">
-                <div>
+            <nav className="p-3 navbar navbar-expand-lg navbar-dark bg-dark h-[8vh] flex justify-between bg-violet-600 text-white">
+                <div className="flex items-center">
                     <img width={30} height={30} src="/guinea.svg" alt="logo"/>
                 </div>
-                <div className="">
-                    <Link href="/">Home</Link>
-
+                <div className="gap-5 flex text-white flex-nowrap">
+                    <Link href="/" className="flex gap-2 justify-around items-center"><img className="w-1/2 h-1/2" src="/home.svg" alt="home"/> Home</Link>
+                    { authenticated &&
+                    <Link href="/orders" className="flex gap-2 justify-around items-center"><img className="w-1/2 h-1/2" src="/orders.svg" alt="my orders"/> My orders</Link>
+                    }
                 </div>
-                <div className="flex align-bottom justify-center pr-5 pt-3">
-                    {user?.user?.user_metadata?.display_name && <p>{user?.user?.user_metadata?.display_name}</p>}
-                    {authenticated ?
-                    <button className="px-5 cursor-pointer hover:bg-teal-600" onClick={() => clearOutUser()}>Logout</button>
-                    : <button className="px-5 cursor-pointer hover:bg-teal-600" onClick={() => toggleLoginDialog(!loginDialog)}>Login</button>
-                    }<span className="relative">
-                        {products.length > 0 && <span className=" flex justify-center items-center absolute top-[-15px] right-[-25px] rounded-full p-2 bg-amber-300 text-black font-bold w-[30px] h-[30px]">{products.length}</span>}
+                <div className="flex items-center justify-center pr-5 pt-3">
+                     <button className="px-5 cursor-pointer" onClick={() => toggleLoginDialog(!loginDialog)} title="log in to your account">
+                            <img src="/user.svg" className="w-[2rem]" alt=""/>
+                    </button>
+
+                    <span className="relative">
+                        {products.length > 0 && <span className=" flex justify-center items-center absolute top-[-15px] right-[-25px] rounded-full p-2 bg-amber-400 text-black font-bold w-[30px] h-[30px]">{products.length}</span>}
                     <Link href="/cart">
                         <img src="/cart.svg" width={30} height={30} alt="cart"/>
                     </Link>

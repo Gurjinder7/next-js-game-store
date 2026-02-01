@@ -23,7 +23,7 @@ const useAppStore = create<GameStoreState>()(
             },
             toggleLoginDialog: (status:boolean) => set((state:GameStoreState) => ({loginDialog: status})),
             setUser: (user) => set((state:GameStoreState) => ({user: user})),
-            clearData: () => set((state:GameStoreState) => ({user: null, products: [], authenticated: false})),
+            clearData: () => set((state:GameStoreState) => ({user: null, products: [], authenticated: false, loginDialog: false})),
         }),
         {
             name: 'game-store-storage',

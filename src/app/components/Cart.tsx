@@ -17,8 +17,10 @@ const CartItem = ({game}:{game:IProduct}) => {
             <div className="flex flex-col w-full text-black text-xl font-semibold">
             <p>{game?.name}</p>
             <p>${game?.price}</p>
-                <div className="flex justify-end">
-                    <button className="bg-red-700 text-white p-2 text-xs hover:bg-red-600 cursor-pointer" onClick={removeFromCart}>Remove</button>
+                <div className="flex justify-end items-center">
+                    <button className="bg-red-700 text-white p-2 text-xs hover:bg-red-600 cursor-pointer flex items-center" onClick={removeFromCart}>
+                        <img src="/bin.svg" className="w-[1rem] h-[1rem]" alt="bin item"/>
+                        Remove</button>
                 </div>
             </div>
 

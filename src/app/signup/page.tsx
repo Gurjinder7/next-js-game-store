@@ -97,15 +97,15 @@ const Signup = () => {
         toggleLoginDialog(false)
     }, []);
     return (
-        <div className="top-0 p-5 flex flex-col justify-center items-center">
-            <form action={formAction} className="flex flex-col items-center h-1/2 w-1/3 border bg-black border-gray-300 p-3 shadow-2xl relative">
+        <div className="p-5 flex justify-center items-center">
+            <form action={formAction} className="flex flex-col items-center h-1/2 w-1/3 border border-gray-300 p-3 shadow-lg relative">
 
-                <h2 className="text-3xl text-center mb-5 mt-8">Signup</h2>
+                <h2 className="text-3xl text-center mb-5 mt-8">Sign up now!</h2>
 
                 <input type="text" placeholder="Name" name="name" minLength={3} className="py-2 px-3 w-full my-3 border border-gray-300" required/>
                 <input type="text" placeholder="Email" name="email"  required minLength={9} pattern="^\S+@\S+\.\S+$" className="py-2 px-3 w-full my-3 border border-gray-300" />
                 <input type="password" placeholder="Password" name="password" minLength={6} required className="py-2 px-3 w-full my-3 border border-gray-300" />
-                <button  type="submit" className="p-3 w-1/4 bg-green-700 hover:bg-green-500 hover:cursor-pointer">Signup</button>
+                <button  type="submit" className="p-3 w-1/4 bg-violet-500 hover:bg-violet-700 hover:cursor-pointer text-white">Signup</button>
 
             </form>
         </div>
