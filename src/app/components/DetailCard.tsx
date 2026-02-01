@@ -24,7 +24,7 @@ const DetailCard = (props: { game: IProduct | null; }) => {
 
     }
     return (
-        <div className="flex gap-10 flex-wrap p-5 my-5 bg-white w-1/2">
+        <div className="flex gap-10 flex-wrap p-5 my-5 bg-white w-1/2 border-gray-200 border shadow-lg">
 
             <div className="w-1/4">
                 <img src={game?.thumbnail} alt="Thumbnail image"/>

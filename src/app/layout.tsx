@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "GameStore",
+  title: "Guinea GameStore",
   description: "Buy PS5 games here!",
 };
 
@@ -32,7 +32,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}
       >
       <Header />
-      <section className="h-[85vh] overflow-auto">
+      <section className="h-[87vh] overflow-auto">
           {children}
       </section>
       <Footer />

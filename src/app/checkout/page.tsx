@@ -10,7 +10,7 @@ export default async function IndexPage({ searchParams }) {
     return (
         <form action="/api/checkout_sessions" method="POST">
             <section>
-                <button type="submit" role="link" className="bg-cyan-900 text-white">
+                <button type="submit" role="link" className="bg-amber-500 text-white">
                     Checkout
                 </button>
             </section>

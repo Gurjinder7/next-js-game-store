@@ -10,7 +10,7 @@ const CartItem = ({game}:{game:IProduct}) => {
     }
 
     return (
-        <div className="flex items-center p-3 bg-white my-3">
+        <div className="flex items-center p-3 bg-white my-4 shadow-lg border border-gray-200">
             <div>
                 <img src={game?.thumbnail} className="w-1/3 h-1/3" alt="thumbnail"/>
             </div>

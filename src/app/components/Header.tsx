@@ -45,7 +45,7 @@ const Header = () => {
 
     return (
         <>
-            <nav className="p-3 navbar navbar-expand-lg navbar-dark bg-dark h-[8vh] flex justify-between bg-cyan-900">
+            <nav className="p-3 navbar navbar-expand-lg navbar-dark bg-dark h-[8vh] flex justify-between bg-amber-700">
                 <div>
                     <img width={30} height={30} src="/guinea.svg" alt="logo"/>
                 </div>

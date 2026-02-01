@@ -83,15 +83,15 @@ const LoginDialog =  () => {
 
     console.log(state)
     return (
-        <div className="fixed h-[100vh] w-[100vw] top-0 p-5 flex flex-col justify-center items-center">
-            <form action={formAction} className="flex flex-col items-center h-1/2 w-1/3 border bg-black border-gray-300 p-3 shadow-2xl relative">
+        <div className="fixed h-[100vh] w-[100vw] top-0 p-5 flex flex-col justify-center items-center bg-amber-50">
+            <form action={formAction} className="flex flex-col items-center h-1/2 w-1/3 border bg-white border-gray-300 p-3 shadow-2xl relative">
                 <span title="close login dialog" className="absolute right-1.5 text-4xl cursor-pointer" onClick={() =>  toggleLoginDialog(false)}>&times;</span>
 
                 <h2 className="text-3xl text-center mb-5 mt-8">Login</h2>
 
                 <input type="text" placeholder="Email" name="email"  required minLength={9} pattern="^\S+@\S+\.\S+$" className="py-2 px-3 w-full my-3 border border-gray-300" />
                 <input type="password" placeholder="Password" name="password" minLength={6} required className="py-2 px-3 w-full my-3 border border-gray-300" />
-                <button  type="submit" className="p-3 w-1/4 bg-green-700 hover:bg-green-500 hover:cursor-pointer">Login</button>
+                <button  type="submit" className="p-3 w-1/4 bg-amber-700 hover:bg-amber-500 hover:cursor-pointer">Login</button>
                 <p className="text-white pt-4">Not registered! <Link href="/signup" className="cursor-pointer"> Signup here...</Link></p>
 
             </form>

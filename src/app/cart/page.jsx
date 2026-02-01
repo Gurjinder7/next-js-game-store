@@ -58,7 +58,7 @@ export const CartPage = () => {
                 </p>
                 <div className="flex justify-center py-3">
                     <Activity mode={products.length > 0 ? 'visible' : 'hidden' } >
-                        <Link href="/checkout" className="bg-cyan-500 p-3">Go to Checkout</Link>
+                        <Link href="/checkout" className="bg-amber-500 p-3">Go to Checkout</Link>
 
                     </Activity>
                 </div>

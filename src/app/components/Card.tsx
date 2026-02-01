@@ -24,7 +24,7 @@ export const ProductCard = ({product}:{product:IProduct}) => {
 
     console.log(products)
     return (
-            <div className="flex flex-col p-4 min-w-2xs max-w-3xl m-3 bg-white">
+            <div className="flex flex-col p-4 min-w-2xs max-w-3xl m-3 bg-white border border-gray-200 shadow-lg">
                 <img src={thumbnail} className="" alt={name}/>
                 <h3 className="text-2xl text-center text-black">{name}</h3>
                 <p className="text-2xl font-bold text-center text-black">${price}</p>
