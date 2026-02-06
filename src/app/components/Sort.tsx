@@ -11,7 +11,7 @@ const SortGames = () => {
     const searchParams = useSearchParams().toString();
     const pathname = usePathname();
 
-    const handleSortChange = (e) => {
+    const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         console.log("handleSortChange", e.target.value);
         let selectedOption = e.target.value;
 
@@ -31,7 +31,8 @@ const SortGames = () => {
         router.push(`${pathname}?sortBy=${encodeURIComponent(sortBy)}&sortOrder=${encodeURIComponent(sortOrder)}${searchParams ? createQueryUrl(false,searchParams): ""}`);
     }
     return (
-        <select onChange={handleSortChange}>
+        <select onChange={handleSortChange} className="border-2 border-gray-200 p-2">
+            {/*<option value=""></option>*/}
             <optgroup label="Name">
                 <option value="0">Asc</option>
                 <option value="1">Desc</option>

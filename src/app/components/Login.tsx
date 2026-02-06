@@ -119,7 +119,7 @@ const LoginDialog =  () => {
             {
                 authenticated ?
                     <div className="flex flex-col items-center h-1/2 w-1/3 border bg-white border-gray-300 p-3 shadow-2xl relative">
-                        <span title="close login dialog" className="absolute right-1.5 text-4xl cursor-pointer" onClick={() =>  toggleLoginDialog(false)}>&times;</span>
+                        <p title="close login dialog" className="absolute right-1.5 text-4xl cursor-pointer" onClick={() =>  toggleLoginDialog(false)}>&times;</p>
 
                         {user?.user?.user_metadata?.display_name && <p>{user?.user?.user_metadata?.display_name}</p>}
                         <button className="px-5 py-3 text-white cursor-pointer bg-violet-500 hover:bg-violet-600" onClick={() => clearOutUser()}>Logout</button>

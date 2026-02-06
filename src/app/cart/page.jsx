@@ -4,6 +4,17 @@
 //     description:'cart'
 // }
 
+import {createClient} from "../../utils/supabase/client";
+
+const addCartToSupabase = async (userId) => {
+
+    const supabase = await createClient()
+
+    const {data, error} = await supabase.from('cart').insert({
+        'user_id': userId,
+    })
+}
+
 import useAppStore from "../../../store";
 import {Activity, Suspense, useEffect, useState} from "react";
 import CartItem from "../components/Cart";
@@ -23,9 +34,7 @@ export const CartPage = () => {
         })
     },[products])
 
-    const goToCheckout = () => {
 
-    }
     // console.log(products)
     console.log(total)
     return (
@@ -60,7 +69,7 @@ export const CartPage = () => {
                 </p>
                 <div className="flex  flex-col items-center justify-center py-3">
                     <Activity mode={products.length > 0 ? 'visible' : 'hidden' } >
-                        <Link href="/checkout" className="text-white bg-amber-700 p-3 hover:bg-amber-600 w-fit">Go to Checkout</Link>
+                        <Link href={`/checkout?items=${JSON.stringify(products)}`} className="text-white bg-amber-700 p-3 hover:bg-amber-600 w-fit">Go to Checkout</Link>
 
                     </Activity>
                 </div>

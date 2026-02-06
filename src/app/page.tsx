@@ -6,6 +6,7 @@ import {IProduct} from "@/utils/interface/product";
 import SearchBar from "@/app/components/SearchBar";
 import {Suspense, use} from "react";
 import SortGames from "@/app/components/Sort";
+import FilterGames from "@/app/components/Filter";
 
 async function signUpNewUser() {
     "use server"
@@ -61,12 +62,23 @@ export default async function Home({searchParams}) {
 
 
     console.log(sortBy,sortOrder)
-    const {data: products} = await supabase.from('games')
+    let query = supabase.from('games')
         .select()
         .ilike('name',`%${search ? search : ''}%`)
         .order(sortBy ?? 'name', {ascending: sortOrder === 'asc' || sortOrder === undefined ? true : false})
 
+    if (filter) {
+        query.eq('genre', filter)
+    }
+
+    const {data: products} = await query
+        // supabase.from('games')
+        // .select()
+        // .ilike('name',`%${search ? search : ''}%`)
+        // .order(sortBy ?? 'name', {ascending: sortOrder === 'asc' || sortOrder === undefined ? true : false})
+
 // console.log(search?.query);
+
     console.log(search)
 
     console.log(products)
@@ -74,12 +86,19 @@ export default async function Home({searchParams}) {
 
     return (
         <div>
-            <div className="flex justify-around gap-5">
+            <div className="flex justify-center gap-5">
+                <div>
+                    <SearchBar/>
 
-            <SearchBar/>
-            <SortGames />
+                </div>
+                <div className="flex justify-evenly gap-5 items-center">
+
+                <FilterGames />
+                <SortGames />
+                </div>
+
             </div>
-
+            <hr/>
             <div className="flex justify-between items-center gap-10 flex-wrap p-5">
                 <Suspense fallback={<div>Loading...</div>}>
             {products?.map((product: IProduct) => (

@@ -1,8 +1,66 @@
+import {cookies} from "next/headers";
+import {createClient} from "@/utils/supabase/server";
+import {error} from "next/dist/build/output/log";
+
+const createCart = async (items) => {
+    console.log(items)
+    const cookieStore = await cookies();
+    const supabase = createClient(cookieStore)
+
+    // console.log(cookieStore.getAll())
+    const {data} = await supabase.auth.getUser()
+
+    // const {data: cart, error} = await supabase.from('cart')
+    //     .select()
+    //     .eq('user_id',data?.user?.id)
+    //     .order('created_at', {ascending: false})
+    //     .single()
+    //
+    // console.log(data?.user?.id)
+    // console.log(cart)
+    //
+    // if(cart?.id) {
+    //
+    // } else {
+    //
+    // }
+    const {data:cartData, error:someError} = await supabase.from('cart').insert({
+        'user_id': data?.user?.id,
+        'converted': false,
+    }).select().order('created_at',{ascending: false}).single()
+
+    if(someError){
+        throw new Error(someError.message)
+    }
+
+    console.log(cartData?.id)
+    let games = []
+    items.forEach(item => {
+        games.push({
+            'game_id': item.id,
+            'cart_id': cartData?.id,
+            'order_id': null,
+        })
+    })
+    const { error:cartItemsError} = await supabase.from('cart_item').insert(games)
+    // //
+    if(cartItemsError){
+        throw new Error(cartItemsError.message)
+    }
+    console.log(cartData, someError)
+    // console.log(cartItemsSuccess, cartItemsError)
+
+    // const {data, error} = await supabase.from('cart_items').insert()
+    return cartData?.id
+}
 
 export default async function IndexPage({ searchParams }) {
-    const { canceled } = await searchParams
-
-
+    const { canceled, items } = await searchParams
+    let cartId = null
+    console.log(items)
+    if(items) {
+       cartId = await createCart(JSON.parse(items))
+    }
     if (canceled) {
         console.log(
             'Order canceled -- continue to shop around and checkout when you’re ready.'
@@ -11,9 +69,10 @@ export default async function IndexPage({ searchParams }) {
     return (
         <div className="text-center items-center justify-center w-full p-5">
 
-        <form action="/api/checkout_sessions" method="POST">
+        <form action="/api/checkout_sessions" method="POST" >
             <section>
                 <p className="text-lg my-3">Please click the button to make payment. You will be redirect to the Stripe payment gateway.</p>
+                <input readOnly={true} type="text" name='cart' value={cartId}/>
                 <button type="submit" role="link" className="bg-violet-500 text-white p-4 hover:bg-violet-700 cursor-pointer">
                     Proceed to payment
                 </button>

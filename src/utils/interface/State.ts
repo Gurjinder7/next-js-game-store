@@ -11,4 +11,5 @@ export type GameStoreState = {
     toggleLoginDialog: (status:boolean) => void;
     setUser: (user: any) => void;
     clearData: () => void;
+    clearProducts: () => void;
 }
