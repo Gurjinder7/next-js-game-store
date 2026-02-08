@@ -3,6 +3,8 @@ import {stripe} from "@/utils/Stripe/stripe";
 import ClearCart from "@/app/components/ClearCart";
 import {cookies} from "next/headers";
 import {createClient} from "@/utils/supabase/server";
+import {SearchParams} from "@/utils/interface/types";
+
 
 const createOrder = async (cartID: string) => {
 
@@ -20,7 +22,7 @@ const createOrder = async (cartID: string) => {
 
 }
 
-export default async function Success({searchParams}) {
+export default async function Success({searchParams}:{searchParams:SearchParams}) {
     const { session_id, cart } = await searchParams
 
     if (!session_id) {
@@ -30,10 +32,10 @@ export default async function Success({searchParams}) {
     // console.log(searchParams)
     const {
       status,
-      customer_details: {email: customerEmail},
+      // customer_details: {email: customerEmail},
         line_items
 
-    } = await stripe.checkout.sessions.retrieve(session_id, {
+    } = await stripe.checkout.sessions.retrieve(session_id as string, {
         expand: ['line_items', 'payment_intent']
     })
 
@@ -47,7 +49,7 @@ export default async function Success({searchParams}) {
     if (status === 'complete') {
 
         if(cart) {
-            await createOrder(cart)
+            await createOrder(cart as string);
         }
 
         return (
@@ -56,7 +58,8 @@ export default async function Success({searchParams}) {
 
                 <p className="text-lg my-5">
                     We appreciate your business! A confirmation email will be sent to{' '}
-                    {customerEmail}. If you have any questions, please email{' '}
+                    {/*{customerEmail}. */}
+                    If you have any questions, please email{' '}
                 </p>
                 <a href="mailto:orders@phoenixgamestore.com">orders@example.com.</a>
             </section>

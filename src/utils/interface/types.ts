@@ -1,0 +1,29 @@
+export type SearchParams = {
+    [key: string]: string  | undefined;
+};
+
+export type UserInfo = {
+    user: {
+
+
+    user_metadata: {
+        email: string;
+        email_verified: boolean;
+        phone_verified: boolean;
+        sub: string;
+        display_name?: string;
+    }
+    }
+
+}
+
+export type ErrorResponse = {
+    message: string;
+    statusCode: number;
+}
+
+export type CartItem = {
+    game_id: number,
+    cart_id: string,
+    order_id: null,
+}

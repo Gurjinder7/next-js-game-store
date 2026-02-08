@@ -1,12 +1,13 @@
 import {createClient} from "@/utils/supabase/server";
 import {cookies} from "next/headers";
-import Login from "@/app/components/Login";
 import {ProductCard} from "@/app/components/Card";
 import {IProduct} from "@/utils/interface/product";
 import SearchBar from "@/app/components/SearchBar";
 import {Suspense, use} from "react";
 import SortGames from "@/app/components/Sort";
 import FilterGames from "@/app/components/Filter";
+import {SearchParams} from "@/utils/interface/types";
+
 
 async function signUpNewUser() {
     "use server"
@@ -50,7 +51,7 @@ async function searchGame(searchTerm: string = "Call") {
 
     console.log(products)
 }
-export default async function Home({searchParams}) {
+export default async function Home({searchParams}: {searchParams: SearchParams}) {
 
     // console.log(searchParams)
 

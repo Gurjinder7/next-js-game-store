@@ -1,8 +1,9 @@
 import {cookies} from "next/headers";
 import {createClient} from "@/utils/supabase/server";
-import {error} from "next/dist/build/output/log";
+import {CartItem, SearchParams} from "@/utils/interface/types";
+import {IProduct} from "@/utils/interface/product";
 
-const createCart = async (items) => {
+const createCart = async (items: IProduct[]) => {
     console.log(items)
     const cookieStore = await cookies();
     const supabase = createClient(cookieStore)
@@ -34,8 +35,8 @@ const createCart = async (items) => {
     }
 
     console.log(cartData?.id)
-    let games = []
-    items.forEach(item => {
+    let games: CartItem[] = []
+    items.forEach((item:IProduct) => {
         games.push({
             'game_id': item.id,
             'cart_id': cartData?.id,
@@ -54,7 +55,7 @@ const createCart = async (items) => {
     return cartData?.id
 }
 
-export default async function IndexPage({ searchParams }) {
+export default async function IndexPage({ searchParams }: {searchParams: SearchParams}) {
     const { canceled, items } = await searchParams
     let cartId = null
     console.log(items)

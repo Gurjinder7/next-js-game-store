@@ -4,6 +4,7 @@ import {cookies, headers} from 'next/headers'
 import {stripe} from "@/utils/Stripe/stripe";
 import {createClient} from "@/utils/supabase/server";
 import {IProduct} from "@/utils/interface/product";
+import { ErrorResponse } from "@/utils/interface/types"
 
 
 // const product = await stripe.products.create({
@@ -39,6 +40,8 @@ const getCartItems = async(cartId: string) => {
 }
 
 export async function POST(req: NextRequest) {
+    // @ts-ignore
+    // @ts-ignore
     try {
         const headersList = await headers()
         const origin = headersList.get('origin')
@@ -86,12 +89,13 @@ export async function POST(req: NextRequest) {
             // ],
             mode: 'payment',
             success_url: `${origin}/success?session_id={CHECKOUT_SESSION_ID}&cart=${cartId}`,
+            customer_email: 'dev.gurjinder@gmail.com'
         });
-        return NextResponse.redirect(session.url, 303)
-    } catch (err) {
+        return NextResponse.redirect(session.url ? session.url: "", 303)
+    } catch (err: unknown) {
         return NextResponse.json(
-            { error: err.message },
-            { status: err.statusCode || 500 }
+            { error: "Something went wrong" },
+            { status: 500 }
         )
     }
 }

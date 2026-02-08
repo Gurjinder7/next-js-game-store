@@ -1,9 +1,10 @@
 import {IProduct} from "@/utils/interface/product";
+import {UserInfo} from "@/utils/interface/types";
 
 export type GameStoreState = {
     products: IProduct[];
     authenticated: boolean;
-    user:null;
+    user:UserInfo | null;
     loginDialog: boolean;
     setAuthenticated: (b: boolean) => void;
     addProduct: (product: IProduct) => void;
