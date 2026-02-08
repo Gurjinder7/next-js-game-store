@@ -1,4 +1,6 @@
 
+The app is deployed at: https://next-js-game-store.vercel.app/orders
+
 # A Next.js e-commerce store with following features
 * Product listing (sorting and filtering)
 * Product suggestions

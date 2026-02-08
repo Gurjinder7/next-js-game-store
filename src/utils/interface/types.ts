@@ -27,3 +27,12 @@ export type CartItem = {
     cart_id: string,
     order_id: null,
 }
+
+export type OrderItem = {
+    cart_id: string;
+    created_at: string;
+    id: number
+    user_id: string
+    price: number;
+    qty: number;
+}

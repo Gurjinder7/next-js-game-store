@@ -1,10 +1,13 @@
-"use client"
 
-import {createClient} from "@/utils/supabase/client";
-import {useEffect} from "react";
+import {createClient} from "@/utils/supabase/server";
+import {cookies} from "next/headers";
+import dayjs from "dayjs";
+import {OrderItem} from "@/utils/interface/types";
+
 
 async function getOrders() {
-    const supabase = createClient()
+    const cookieStore = await cookies();
+    const supabase = createClient(cookieStore)
 
     const {data,error} = await supabase.auth.getUser()
 
@@ -15,20 +18,53 @@ async function getOrders() {
 
     console.log(data)
     console.log(orders)
-
+    return orders
 }
 
-const OrdersPage = () => {
+
+const OrdersPage = async () => {
 
 
+    const orders = await getOrders()
 
-    useEffect(() => {
-        getOrders()
-
-    }, []);
     return (
-        <section id="orders">
-            <p>Orders</p>
+        <section id="orders" className="flex flex-col justify-center items-center w-full">
+            <p className="text-2xl font-semibold my-5">Orders</p>
+            <hr/>
+            <div className="overflow-auto h-[60vh] w-2/3 text-left">
+                <table className="w-full">
+                    <thead>
+                    <tr className="p-2">
+                        <th className="border-2 border-gray-300 p-1">Order No.</th>
+                        <th className="border-2 border-gray-300 p-1">Price</th>
+                        <th className="border-2 border-gray-300 p-1">Qty</th>
+                        <th className="border-2 border-gray-300 p-1">Date</th>
+                        <th className="border-2 border-gray-300 p-1 text-center">Details</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {orders?.map((order:OrderItem) => (
+                        <tr key={order.cart_id+order.id} className="my-2">
+                            <td className="border-2 border-gray-300 p-1"> {order.id}</td>
+                            <td className="border-2 border-gray-300 p-1">{order.price}</td>
+                            <td className="border-2 border-gray-300 p-1">{order.qty}</td>
+                            <td className="border-2 border-gray-300 p-1">{dayjs(order.created_at).format('DD-MMM-YYYY HH:mm:ss')}</td>
+                            <td className="border-2 border-gray-300 p-1 text-center ">
+                               <span className="flex justify-center w-full">
+                                    <img src="/eye.svg" className="w-8" alt=""/>
+                               </span>
+                            </td>
+
+
+                        </tr>
+                    ))}
+                    </tbody>
+                </table>
+                <ul>
+
+                </ul>
+            </div>
         </section>
     )
 }
