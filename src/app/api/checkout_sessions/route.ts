@@ -3,6 +3,7 @@ import {cookies, headers} from 'next/headers'
 
 import {stripe} from "@/utils/Stripe/stripe";
 import {createClient} from "@/utils/supabase/server";
+import {IProduct} from "@/utils/interface/product";
 
 
 // const product = await stripe.products.create({
@@ -15,7 +16,7 @@ import {createClient} from "@/utils/supabase/server";
 //     currency: 'usd',
 // });
 
-const getCartItems = async(cartId) => {
+const getCartItems = async(cartId: string) => {
     const cookieStore = await cookies()
     const supabase = createClient(cookieStore)
 
@@ -31,7 +32,7 @@ const getCartItems = async(cartId) => {
 
     console.log(games)
 
-        return games
+        return games as IProduct[]
     }
     return []
 
@@ -41,7 +42,7 @@ export async function POST(req: NextRequest) {
     try {
         const headersList = await headers()
         const origin = headersList.get('origin')
-        let lineItems = []
+        let lineItems: IProduct[] = []
         let cartId = null
         // console.log(req)
         try {
