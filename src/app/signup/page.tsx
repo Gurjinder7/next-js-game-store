@@ -1,5 +1,4 @@
 "use client"
-import Link from "next/link";
 import {createClient} from "@/utils/supabase/client";
 import {useActionState, useEffect} from "react";
 import useAppStore from "../../../store";
@@ -70,10 +69,10 @@ function submitForm(prevState: FormState, formData: FormData) {
 }
 
 const Signup = () => {
-    const { authenticated, setAuthenticated, setUser, products, toggleLoginDialog } = useAppStore()
+    const { setAuthenticated, setUser, products, toggleLoginDialog } = useAppStore()
     const router = useRouter()
 
-    const [state, formAction, isPending] = useActionState(submitForm, initialState);
+    const [state, formAction] = useActionState(submitForm, initialState);
 
 
     useEffect(() => {

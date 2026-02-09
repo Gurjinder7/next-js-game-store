@@ -19,6 +19,7 @@ import useAppStore from "../../../store";
 import {Activity, Suspense, useEffect, useState} from "react";
 import CartItem from "../components/Cart";
 import Link from "next/link";
+import {types} from "node:util";
 
 export const CartPage = () => {
     const [total, setTotal] = useState(0);
@@ -27,16 +28,20 @@ export const CartPage = () => {
     useEffect(() => {
         console.log(products)
         setTotal(0)
+        let itemsTotal = 0
         products.map(product => {
             // const newTotal = total + product.price;
             console.log(total)
-            setTotal((prevTotal) => prevTotal + product.price);
+            itemsTotal += product.price
         })
+
+        console.log(itemsTotal,Number(parseFloat(itemsTotal).toFixed(2)))
+        setTotal(Number(parseFloat(itemsTotal).toFixed(2)))
     },[products])
 
 
     // console.log(products)
-    console.log(total)
+    console.log(typeof(total))
     return (
         <div className="p-3 flex flex-col justify-center items-center">
             {!authenticated && products.length > 0 && <p className="font-semibold text-amber-700 py-2 px-5 bg-amber-300">Please login to checkout.</p>}

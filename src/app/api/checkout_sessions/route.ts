@@ -66,7 +66,7 @@ export async function POST(req: NextRequest) {
                 product_data: {
                     name: item.name,
                 },
-                unit_amount: item.price * 100, // Convert to cents
+                unit_amount: Number(parseFloat(String(item.price * 100)).toFixed(2)), // Convert to cents
             },
             quantity: 1,
         }));
@@ -88,12 +88,12 @@ export async function POST(req: NextRequest) {
             // ],
             mode: 'payment',
             success_url: `${origin}/success?session_id={CHECKOUT_SESSION_ID}&cart=${cartId}`,
-            customer_email: 'dev.gurjinder@gmail.com'
+            customer_email: 'test@gmail.com'
         });
         return NextResponse.redirect(session.url ? session.url: "", 303)
     } catch (err: unknown) {
         return NextResponse.json(
-            { error: "Something went wrong" },
+            { error: err},
             { status: 500 }
         )
     }
