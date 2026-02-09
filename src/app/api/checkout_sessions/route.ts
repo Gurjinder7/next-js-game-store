@@ -40,8 +40,7 @@ const getCartItems = async(cartId: string) => {
 }
 
 export async function POST(req: NextRequest) {
-    // @ts-ignore
-    // @ts-ignore
+
     try {
         const headersList = await headers()
         const origin = headersList.get('origin')

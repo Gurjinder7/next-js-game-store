@@ -2,6 +2,7 @@ import {cookies} from "next/headers";
 import {createClient} from "@/utils/supabase/server";
 import {CartItem, SearchParams} from "@/utils/interface/types";
 import {IProduct} from "@/utils/interface/product";
+import Link from "next/link";
 
 const createCart = async (items: IProduct[]) => {
     console.log(items)
@@ -71,14 +72,21 @@ export default async function IndexPage({ searchParams }: {searchParams: SearchP
         <div className="text-center items-center justify-center w-full p-5">
 
         <form action="/api/checkout_sessions" method="POST" >
-            <section>
+            <section className="relative">
                 <p className="text-lg my-3">Please click the button to make payment. You will be redirect to the Stripe payment gateway.</p>
-                <input readOnly={true} type="text" name='cart' value={cartId}/>
+                <input className="opacity-0 absolute top-0" readOnly={true} type="text" name='cart' value={cartId}/>
                 <button type="submit" role="link" className="bg-violet-500 text-white p-4 hover:bg-violet-700 cursor-pointer">
                     Proceed to payment
                 </button>
             </section>
+
         </form>
+            <div className="flex items-center justify-center mt-5">
+                <Link href="\cart" className="bg-amber-500 text-white p-4 hover:bg-amber-700 cursor-pointer px-9">
+                    Go back to cart
+                </Link>
+            </div>
+
         </div>
 
     )

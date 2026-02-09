@@ -31,15 +31,15 @@ const OrdersPage = async () => {
         <section id="orders" className="flex flex-col justify-center items-center w-full">
             <p className="text-2xl font-semibold my-5">Orders</p>
             <hr/>
-            <div className="overflow-auto h-[60vh] w-2/3 text-left">
-                <table className="w-full">
+            <div className="overflow-auto h-[60vh] max-sm:w-full sm:w-2/3 text-left max-sm:p-3">
+                <table className="sm:w-full">
                     <thead>
                     <tr className="p-2">
-                        <th className="border-2 border-gray-300 p-1">Order No.</th>
-                        <th className="border-2 border-gray-300 p-1">Price</th>
-                        <th className="border-2 border-gray-300 p-1">Qty</th>
-                        <th className="border-2 border-gray-300 p-1">Date</th>
-                        <th className="border-2 border-gray-300 p-1 text-center">Details</th>
+                        <th className="border-2 border-gray-300 p-1 max-sm:min-w-[100px]">Order No.</th>
+                        <th className="border-2 border-gray-300 p-1 max-sm:min-w-[100px] ">Price</th>
+                        <th className="border-2 border-gray-300 p-1 max-sm:min-w-[100px]">Qty</th>
+                        <th className="border-2 border-gray-300 p-1 max-sm:min-w-xs">Date</th>
+                        <th className="border-2 border-gray-300 p-1 text-center max-sm:min-w-[100px]">Details</th>
 
                     </tr>
                     </thead>

@@ -87,20 +87,18 @@ export default async function Home({searchParams}: {searchParams: SearchParams})
 
     return (
         <div>
-            <div className="flex justify-center gap-5">
+            <div className="flex justify-center gap-5 max-sm:flex-col max-sm:p-2">
                 <div>
                     <SearchBar/>
-
                 </div>
                 <div className="flex justify-evenly gap-5 items-center">
-
                 <FilterGames />
                 <SortGames />
                 </div>
 
             </div>
             <hr/>
-            <div className="flex justify-between items-center gap-10 flex-wrap p-5">
+            <div className="flex justify-between items-center gap-10 flex-wrap p-5 max-sm: justify-center">
                 <Suspense fallback={<div>Loading...</div>}>
             {products?.map((product: IProduct) => (
 

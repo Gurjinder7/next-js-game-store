@@ -5,6 +5,7 @@ export type GameStoreState = {
     products: IProduct[];
     authenticated: boolean;
     user:UserInfo | null;
+    sidebar: boolean;
     loginDialog: boolean;
     setAuthenticated: (b: boolean) => void;
     addProduct: (product: IProduct) => void;
@@ -13,4 +14,5 @@ export type GameStoreState = {
     setUser: (user: any) => void;
     clearData: () => void;
     clearProducts: () => void;
+    toggleSidebar: (b: boolean) => void;
 }

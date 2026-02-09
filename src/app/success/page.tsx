@@ -3,19 +3,27 @@ import {stripe} from "@/utils/Stripe/stripe";
 import ClearCart from "@/app/components/ClearCart";
 import {cookies} from "next/headers";
 import {createClient} from "@/utils/supabase/server";
-import {SearchParams} from "@/utils/interface/types";
+import {LineItem, LineProduct, SearchParams} from "@/utils/interface/types";
 
 
-const createOrder = async (cartID: string) => {
+const createOrder = async (cartID: string, items: any ) => {
 
     const coookieStore = await  cookies();
-    const supabase = createClient(coookieStore)
+    const supabase = createClient(coookieStore);
 
+    let price = 0;
+    items?.data.forEach((item:LineProduct) => {
+        price += item.amount_total;
+    })
+
+    console.log(price)
+    console.log(items?.data.length)
     const {data: user} =await supabase.auth.getUser()
 
     const {data, error } = await supabase.from('orders').insert({
         'cart_id': cartID,
-        'user_id': user?.user?.id
+        'user_id': user?.user?.id,
+        // 'qty': items?.data?.length,
     })
 
     if(error) throw new Error(error.message);
@@ -49,7 +57,7 @@ export default async function Success({searchParams}:{searchParams:SearchParams}
     if (status === 'complete') {
 
         if(cart) {
-            await createOrder(cart as string);
+            await createOrder(cart, line_items);
         }
 
         return (

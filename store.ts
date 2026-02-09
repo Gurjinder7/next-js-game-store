@@ -10,6 +10,7 @@ const useAppStore = create<GameStoreState>()(
             products:[],
             authenticated: false,
             user: null,
+            sidebar: false,
             loginDialog: false,
             setAuthenticated: (status: boolean) => set((state:GameStoreState) => ({authenticated: status})),
             addProduct: (product: IProduct) => {
@@ -25,6 +26,7 @@ const useAppStore = create<GameStoreState>()(
             setUser: (user) => set((state:GameStoreState) => ({user: user})),
             clearData: () => set((state:GameStoreState) => ({user: null, products: [], authenticated: false, loginDialog: false})),
             clearProducts: () => set((state:GameStoreState) => ({products: []})),
+            toggleSidebar: (status:boolean) => set((state:GameStoreState) => ({sidebar: status})),
         }),
         {
             name: 'game-store-storage',

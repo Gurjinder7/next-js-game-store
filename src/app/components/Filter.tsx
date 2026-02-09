@@ -28,7 +28,7 @@ const FilterGames = () => {
     }
 
     return (
-        <div>
+        <div className="">
             <select name="" id="" onChange={handleFilterChange} className="border-2 border-gray-200 p-2">
                 <option value={GENRE.all}>{GENRE.all}</option>
                 <option value={GENRE.action}>{GENRE.action}</option>

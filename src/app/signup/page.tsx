@@ -98,7 +98,7 @@ const Signup = () => {
     }, []);
     return (
         <div className="p-5 flex justify-center items-center">
-            <form action={formAction} className="flex flex-col items-center h-1/2 w-1/3 border border-gray-300 p-3 shadow-lg relative">
+            <form action={formAction} className="flex flex-col items-center h-1/2 sm:w-1/3 max-sm:w-full border border-gray-300 p-3 shadow-lg relative">
 
                 <h2 className="text-3xl text-center mb-5 mt-8">Sign up now!</h2>
 

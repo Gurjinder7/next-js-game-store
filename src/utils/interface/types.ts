@@ -36,3 +36,25 @@ export type OrderItem = {
     price: number;
     qty: number;
 }
+
+export type LineProduct = {
+    adjustable_quantity: number;
+    amount_discount: number;
+    amount_subtotal: number;
+    amount_tax: number;
+    amount_total:number;
+    currency:string;
+    description: string;
+    id: string;
+    metadata: {}
+    object: string;
+    price: {}
+    quantity:number
+}
+export type LineItem = {
+    data: LineProduct[];
+    has_more: boolean;
+    object: string;
+    url: string;
+
+}
