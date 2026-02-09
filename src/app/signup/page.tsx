@@ -29,7 +29,8 @@ async function handleSubmit(formState: FormState) {
             options: {
                 data: {
                     display_name: formState.name
-                }
+                },
+                emailRedirectTo: 'https://next-js-game-store.vercel.app/'
             }
 
         })
