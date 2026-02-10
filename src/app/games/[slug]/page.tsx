@@ -53,7 +53,7 @@ const Game = async ({params}: {
 
             <div className="p-3">
                 <h1 className="text-2xl text-center" >You might also like! </h1>
-                <div className="flex  ">
+                <div className="flex  max-sm:flex-col">
                     <Suspense fallback={<div>Looking for suggestions..</div>}>
                         {suggestedGames?.map((game: IProduct) => (
                             <ProductCard product={game} key={game.id}/>

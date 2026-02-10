@@ -28,7 +28,7 @@ const FilterGames = () => {
     }
 
     return (
-        <div className="">
+        <article className="">
             <select name="" id="" onChange={handleFilterChange} className="border-2 border-gray-200 p-2">
                 <option value={GENRE.all}>{GENRE.all}</option>
                 <option value={GENRE.action}>{GENRE.action}</option>
@@ -36,7 +36,7 @@ const FilterGames = () => {
                 <option value={GENRE.rpg}>{GENRE.rpg}</option>
                 <option value={GENRE.adventure}>{GENRE.adventure}</option>
             </select>
-        </div>
+        </article>
     )
 }
 

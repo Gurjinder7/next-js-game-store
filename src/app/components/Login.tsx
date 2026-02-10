@@ -115,16 +115,16 @@ const LoginDialog =  () => {
 
     console.log(state)
     return (
-        <div className="fixed h-[100vh] w-[100vw] top-0 p-5 flex flex-col justify-center items-center bg-violet-100">
+        <article className="fixed h-[100vh] w-[100vw] top-0 p-5 flex flex-col justify-center items-center bg-violet-100">
             {
                 authenticated ?
-                    <div className="flex flex-col items-center max-sm:w-full max-sm:h-4/5 sm:h-1/2 sm:w-1/3 border bg-white border-gray-300 p-3 shadow-2xl relative">
+                    <section className="flex flex-col items-center max-sm:w-full max-sm:h-4/5 sm:h-1/2 sm:w-1/3 border bg-white border-gray-300 p-3 shadow-2xl relative">
                         <p title="close login dialog" className="absolute right-1.5 text-4xl cursor-pointer" onClick={() =>  toggleLoginDialog(false)}>&times;</p>
 
                         {user?.user?.user_metadata?.display_name && <p>{user?.user?.user_metadata?.display_name}</p>}
                         <button className="px-5 py-3 text-white cursor-pointer bg-violet-500 hover:bg-violet-600" onClick={() => clearOutUser()}>Logout</button>
 
-                    </div>
+                    </section>
             :
             <form action={formAction} className="flex flex-col items-center h-1/2 sm:w-1/3 max-sm:w-full border bg-white border-gray-300 p-3 shadow-2xl relative">
                 <span title="close login dialog" className="absolute right-1.5 text-4xl cursor-pointer" onClick={() =>  toggleLoginDialog(false)}>&times;</span>
@@ -139,7 +139,7 @@ const LoginDialog =  () => {
             </form>
             }
 
-        </div>
+        </article>
     )
 }
 
