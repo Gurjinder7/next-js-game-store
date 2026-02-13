@@ -73,6 +73,8 @@ export default async function IndexPage({ searchParams }: {searchParams: SearchP
 
         <form action="/api/checkout_sessions" method="POST" >
             <section className="relative">
+                <p className="font-semibold text-red-600 p-3 bg-red-300">This is a dummy project, please don't make actual payment using your card details. </p>
+
                 <p className="text-lg my-3">Please click the button to make payment. You will be redirect to the Stripe payment gateway.</p>
                 <input className="opacity-0 absolute top-0" readOnly={true} type="text" name='cart' value={cartId}/>
                 <button type="submit" role="link" className="bg-violet-500 text-white p-4 hover:bg-violet-700 cursor-pointer">
@@ -85,6 +87,15 @@ export default async function IndexPage({ searchParams }: {searchParams: SearchP
                 <Link href="\cart" className="bg-amber-500 text-white p-4 hover:bg-amber-700 cursor-pointer px-9">
                     Go back to cart
                 </Link>
+            </div>
+            <div className="my-4 sm:w-1/2 m-auto max-sm:w-full">
+
+            <p className="font-semibold mt-4 text-justify">Use following card details for dummy payment:</p>
+                <ul className="text-justify">
+                    <li>Card: 4242 4242 4242 4242</li>
+                    <li>Expiry: any date in the future</li>
+                    <li>CVV: any 3 digits</li>
+                </ul>
             </div>
 
         </div>

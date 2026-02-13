@@ -36,6 +36,7 @@ const OrdersPage = async () => {
                     <thead>
                     <tr className="p-2">
                         <th className="border-2 border-gray-300 p-1 max-sm:min-w-[100px]">Order No.</th>
+                        <th className="border-2 border-gray-300 p-1 max-sm:min-w-[100px]">Items.</th>
                         <th className="border-2 border-gray-300 p-1 max-sm:min-w-[100px] ">Price</th>
                         <th className="border-2 border-gray-300 p-1 max-sm:min-w-[100px]">Qty</th>
                         <th className="border-2 border-gray-300 p-1 max-sm:min-w-xs">Date</th>
@@ -47,7 +48,8 @@ const OrdersPage = async () => {
                     {orders?.map((order:OrderItem) => (
                         <tr key={order.cart_id+order.id} className="my-2">
                             <td className="border-2 border-gray-300 p-1"> {order.id}</td>
-                            <td className="border-2 border-gray-300 p-1">{order.price}</td>
+                            <td className="border-2 border-gray-300 p-1"> {order?.items}</td>
+                            <td className="border-2 border-gray-300 p-1">${order?.total/100}</td>
                             <td className="border-2 border-gray-300 p-1">{order.qty}</td>
                             <td className="border-2 border-gray-300 p-1">{dayjs(order.created_at).format('DD-MMM-YYYY HH:mm:ss')}</td>
                             <td className="border-2 border-gray-300 p-1 text-center ">

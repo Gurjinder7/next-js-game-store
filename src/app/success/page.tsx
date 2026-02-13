@@ -12,8 +12,10 @@ const createOrder = async (cartID: string, items: any ) => {
     const supabase = createClient(coookieStore);
 
     let price = 0;
+    let games = ''
     items?.data.forEach((item:LineProduct) => {
         price += item.amount_total;
+        games += item.description + ', ';
     })
 
     console.log(price)
@@ -23,7 +25,9 @@ const createOrder = async (cartID: string, items: any ) => {
     const {data, error } = await supabase.from('orders').insert({
         'cart_id': cartID,
         'user_id': user?.user?.id,
-        // 'qty': items?.data?.length,
+        'qty': items?.data?.length,
+        'items': games,
+        'total': price
     })
 
     if(error) throw new Error(error.message);

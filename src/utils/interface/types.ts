@@ -33,8 +33,9 @@ export type OrderItem = {
     created_at: string;
     id: number
     user_id: string
-    price: number;
+    total: number;
     qty: number;
+    items: string;
 }
 
 export type LineProduct = {
