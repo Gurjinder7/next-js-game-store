@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "biome check",
     "format": "biome format --write",
-    "test": "vitest --dir tests/vitest"
+    "test": "vitest --dir tests/vitest",
+    "dom-test": "npx vitest --browser.chromium --dir=tests/vitest",
+    "playwright-ui": "npx playwright test --ui"
   },
   "dependencies": {
     "@stripe/stripe-js": "^8.7.0",
@@ -26,11 +28,18 @@
     "@biomejs/biome": "2.2.0",
     "@playwright/test": "^1.57.0",
     "@tailwindcss/postcss": "^4",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/react": "^16.3.2",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^5.1.4",
+    "@vitest/browser-playwright": "^4.0.18",
+    "jsdom": "^28.0.0",
     "tailwindcss": "^4",
     "typescript": "^5",
-    "vitest": "^4.0.17"
+    "vite-tsconfig-paths": "^6.1.1",
+    "vitest": "^4.0.17",
+    "vitest-browser-react": "^2.0.5"
   }
 }

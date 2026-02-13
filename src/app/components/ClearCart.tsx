@@ -3,7 +3,7 @@ import Link from "next/link";
 import useAppStore from "../../../store";
 import {useEffect} from "react";
 
-const ClearCart = () => {
+export const ClearCart = () => {
 
     const { clearProducts } = useAppStore()
 
