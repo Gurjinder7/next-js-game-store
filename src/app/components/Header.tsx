@@ -55,7 +55,7 @@ const Header = () => {
                 <div className="max-sm:hidden sm:flex gap-5 text-white flex-nowrap">
                     <Link href="/" className="flex gap-2 justify-around items-center"><img className="w-1/2 h-1/2" src="/home.svg" alt="home"/> Home</Link>
                     { authenticated &&
-                    <Link href="/orders" className="flex gap-2 justify-around items-center"><img className="w-1/2 h-1/2" src="/orders.svg" alt="my orders"/> My orders</Link>
+                    <Link href="/orders" className="flex gap-2 justify-around items-center"><img className="w-1/2 h-1/2" src="/orders.svg" alt="my orders"/> Orders</Link>
                     }
                 </div>
                 <div className="max-sm:hidden sm:flex items-center justify-center pr-5 pt-3 ">
@@ -88,7 +88,7 @@ const Header = () => {
                         </li>
                         { authenticated &&
                             <li className="my-[4rem] border-b-2 text-center text-4xl pb-3">
-                                <Link href="/orders" className="flex gap-2 justify-around items-center">My orders</Link>
+                                <Link href="/orders" className="flex gap-2 justify-around items-center">Orders</Link>
 
                             </li>
                         }
