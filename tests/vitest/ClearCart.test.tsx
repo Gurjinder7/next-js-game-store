@@ -19,3 +19,8 @@ test('ClearCart component rendering', async () => {
     await expect.element(screen.getByText('Your order has been placed!')).toBeVisible()
 })
 
+// Component snapshot test
+test('ClearCart component snapshot', () => {
+    const asFragment = render(<ClearCart />)
+    expect(asFragment).toMatchSnapshot()
+})
