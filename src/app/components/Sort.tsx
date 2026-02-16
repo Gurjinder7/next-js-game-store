@@ -31,7 +31,7 @@ const SortGames = () => {
         router.push(`${pathname}?sortBy=${encodeURIComponent(sortBy)}&sortOrder=${encodeURIComponent(sortOrder)}${searchParams ? createQueryUrl(false,searchParams): ""}`);
     }
     return (
-        <select onChange={handleSortChange} className="border-2 border-gray-200 p-2">
+        <select data-testid="game-sort" onChange={handleSortChange} className="border-2 border-gray-200 p-2">
             {/*<option value=""></option>*/}
             <optgroup label="Name">
                 <option value="0">Asc</option>

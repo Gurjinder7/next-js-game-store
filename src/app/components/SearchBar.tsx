@@ -19,8 +19,8 @@ const SearchBar = () => {
     }
     return (
         <article className="my-2 p-2 border-2 border-gray-200 flex w-fit max-sm:w-full relative">
-            <input className="outline-0" placeholder="Search games here... " type="text" onKeyPress={(e) => handleKeyDown(e)} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target?.value)}/>
-            <span onClick={handleSearchChange} className="absolute right-0 top-0 cursor-pointer bg-gray-300"> <img src="/search.svg" className="w-[2.5rem]" alt="search"/></span>
+            <input data-testid='game-search' className="outline-0" placeholder="Search games here... " type="text" onKeyPress={(e) => handleKeyDown(e)} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target?.value)}/>
+            <span data-testid='search-click' onClick={handleSearchChange} className="absolute right-0 top-0 cursor-pointer bg-gray-300"> <img src="/search.svg" className="w-[2.5rem]" alt="search"/></span>
         </article>
     )
 }

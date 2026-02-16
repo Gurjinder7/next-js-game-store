@@ -64,8 +64,8 @@ const Header = () => {
                     </button>
 
                     <span className="relative">
-                        {products.length > 0 && <span className=" flex justify-center items-center absolute top-[-15px] right-[-25px] rounded-full p-2 bg-amber-400 text-black font-bold w-[30px] h-[30px]">{products.length}</span>}
-                    <Link href="/cart">
+                        {products.length > 0 && <span className=" flex justify-center items-center absolute top-[-15px] right-[-25px] rounded-full p-2 bg-amber-400 text-black font-bold w-[30px] h-[30px]" data-testid='cart-total' >{products.length}</span>}
+                    <Link href="/cart" data-testid="cart-link">
                         <img src="/cart.svg" width={30} height={30} alt="cart"/>
                     </Link>
                     </span>

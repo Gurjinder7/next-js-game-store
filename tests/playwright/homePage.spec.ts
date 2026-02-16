@@ -1,14 +1,14 @@
 import { test, expect } from '@playwright/test';
 
 test('Home page has a title that contains GameStore', async ({ page }) => {
-  await page.goto('https://next-js-game-store.vercel.app/');
+  await page.goto('http://localhost:3000');
 
   // Expect a title "to contain" a substring.
   await expect(page).toHaveTitle(/GameStore/);
 });
 
-test('See details of a listed game from Home page', async ({ page }) => {
-  await page.goto('https://next-js-game-store.vercel.app/');
+test(   'See details of a listed game from Home page', async ({ page }) => {
+  await page.goto('http://localhost:3000');
 
   // Expect Home link to appear
   await expect(page.getByRole('link', { name: 'Home' })).toBeVisible();
@@ -29,9 +29,9 @@ test('See details of a listed game from Home page', async ({ page }) => {
     // await ele.dispatchEvent('click') - preferred
 
     // waiting for the navigation to complete
-    await page.waitForURL('https://next-js-game-store.vercel.app/games/5');
+    await page.waitForURL('/games/5');
 
     // comparing navigated link to the expected link
-    await expect(page).toHaveURL('https://next-js-game-store.vercel.app/games/5');
+    await expect(page).toHaveURL('/games/5');
 
 });
