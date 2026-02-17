@@ -1,6 +1,6 @@
 
 The app is deployed at: https://next-js-game-store.vercel.app/orders
-
+![Screenshot_20260217_213449.png](public/Screenshot_20260217_213449.png)
 # A Next.js e-commerce store with following features
 * Product listing (sorting and filtering)
 * Product suggestions
@@ -35,17 +35,19 @@ The app is deployed at: https://next-js-game-store.vercel.app/orders
 
 First, run the development server:
 
-```bash
+```
+npm i
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
+#### Project will run on localhost:3000
+
 ### To run playwright test cases
+
+```
+npm run playwright-ui
+```
+![Screenshot_20260217_213105.png](public/Screenshot_20260217_213105.png)
 ```
 // To run on headless UI 
 npx playwright test --ui 
@@ -53,11 +55,12 @@ npx playwright test --ui
 // To run on chromim
 npm playwright test --project=chromium
 ```
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-
+## To run vitest tests
+```
+npm run dom-test -  for UI
+```
+```
+npm run test
+```
+![Screenshot_20260217_213335.png](public/Screenshot_20260217_213335.png)
