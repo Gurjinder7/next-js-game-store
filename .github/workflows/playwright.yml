@@ -20,7 +20,7 @@ jobs:
     - name: Install dependencies
       run: npm ci
     - name: Set up Supabase
-      uses: supabase/setup-cli@v1.3.0
+      uses: supabase/setup-cli@v2.20.3
     - run: |
             supabase start
             sb_status=$(supabase status)
