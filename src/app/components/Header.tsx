@@ -55,11 +55,11 @@ const Header = () => {
                 <div className="max-sm:hidden sm:flex gap-5 text-white flex-nowrap">
                     <Link href="/" className="flex gap-2 justify-around items-center"><img className="w-1/2 h-1/2" src="/home.svg" alt="home"/> Home</Link>
                     { authenticated &&
-                    <Link href="/orders" className="flex gap-2 justify-around items-center"><img className="w-1/2 h-1/2" src="/orders.svg" alt="my orders"/> Orders</Link>
+                    <Link href="/orders" data-testid = 'myOrders' className="flex gap-2 justify-around items-center"><img className="w-1/2 h-1/2" src="/orders.svg" alt="my orders"/> Orders</Link>
                     }
                 </div>
                 <div className="max-sm:hidden sm:flex items-center justify-center pr-5 pt-3 ">
-                     <button className="px-5 cursor-pointer" onClick={() => toggleLoginDialog(!loginDialog)} title="log in to your account">
+                     <button data-testid="user-auth-toggle" className="px-5 cursor-pointer" onClick={() => toggleLoginDialog(!loginDialog)} title="log in to your account">
                             <img src="/user.svg" className="w-[2rem]" alt=""/>
                     </button>
 
@@ -88,7 +88,7 @@ const Header = () => {
                         </li>
                         { authenticated &&
                             <li className="my-[4rem] border-b-2 text-center text-4xl pb-3">
-                                <Link href="/orders" className="flex gap-2 justify-around items-center">Orders</Link>
+                                <Link href="/orders"  className="flex gap-2 justify-around items-center">Orders</Link>
 
                             </li>
                         }
