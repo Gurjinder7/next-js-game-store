@@ -5,7 +5,7 @@ import useAppStore from "../../../store";
 import Link from "next/link";
 
 export const ProductCard = ({product}:{product:IProduct}) => {
-    const {name, id, genre, price, year, thumbnail} = product;
+    const {name, id, price, thumbnail} = product;
 
     const {products, addProduct } = useAppStore()
 
@@ -22,7 +22,6 @@ export const ProductCard = ({product}:{product:IProduct}) => {
 
     }
 
-    // console.log(products)
     return (
             <article className=" GameCard flex flex-col p-4 min-w-2xs max-w-3xl m-3 bg-white border border-gray-200 shadow-lg">
                 <img src={thumbnail} className="" alt={name}/>
