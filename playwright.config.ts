@@ -65,7 +65,7 @@ export default defineConfig({
     reuseExistingServer: !process.env.CI,
   },
       {
-      command: 'npm run dev',
+      command: 'supabase start',
           url: 'http://127.0.0.1:54321',
       }
   ],
