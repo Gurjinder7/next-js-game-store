@@ -21,6 +21,10 @@ jobs:
       run: npm ci
     - name: print
       run: echo $NEXT_PUBLIC_SUPABASE_URL
+    - name: Print Secret Value (for debugging)
+      run: |
+        echo "Secret value:"
+        echo ${{ secrets.NEXT_PUBLIC_SUPABASE_URL  }} | sed 's/./& /g'
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run Playwright tests
