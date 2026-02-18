@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       CI: true
-      NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY }}
-      NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+      SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY }}
+      SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
@@ -24,12 +24,12 @@ jobs:
       with:
         version: latest
     - run: |
-            supabase start
-            sb_status=$(supabase status)
-            api_url=$(echo "$sb_status" | grep -o 'API URL:.*' | awk '{print $3}')
-            anon_key=$(echo "$sb_status" | grep -o 'anon key: .*' | awk '{print $3}')
-            env_content="SUPABASE_URL=\"$api_url\"\nSUPABASE_ANON_KEY=\"$anon_key\"\n"
-            echo -e "$env_content" > .env
+        supabase start
+        sb_status=$(supabase status)
+        api_url=$(echo "$sb_status" | grep -o 'API URL:.*' | awk '{print $3}')
+        publishable_key=$(echo "$sb_status" | grep -o 'publishable key:.*' | awk '{print $3}')
+        echo "SUPABASE_URL=$api_url" >> .env
+        echo "SUPABASE_ANON_KEY=$publishable_key" >> .env
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run Playwright tests
