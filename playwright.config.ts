@@ -63,9 +63,5 @@ export default defineConfig({
     url: 'http://localhost:3000',
     reuseExistingServer: !process.env.CI,
   },
-  {
-  command: 'supabase start',
-      url: 'http://127.0.0.1:54321',
-  }
   ],
 });
