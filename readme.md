@@ -64,3 +64,10 @@ npm run dom-test -  for UI
 npm run test
 ```
 ![Screenshot_20260217_213335.png](public/Screenshot_20260217_213335.png)
+
+## Run docker on local
+need your .env file for environment variables
+```
+docker compose up
+
+```
