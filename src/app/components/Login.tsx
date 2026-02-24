@@ -1,6 +1,6 @@
 "use client"
 
-import {useActionState, useEffect, useState} from "react";
+import {useActionState, useEffect} from "react";
 import useAppStore from "../../../store";
 import {createClient} from "@/utils/supabase/client";
 import Link from "next/link";
