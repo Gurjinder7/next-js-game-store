@@ -21,12 +21,10 @@ const initialState = {
 
 async function logOut() {
     const supabase = await createClient()
-    // const {clearData } = useAppStore()
 
     const { error } = await supabase.auth.signOut()
     console.log("Sign Out")
     console.log(error)
-    // clearData()
 
     if(error) {
         return new Error(error.message)
@@ -55,9 +53,7 @@ async function handleSubmit(formState: FormState) {
 function submitForm(prevState: FormState, formData: FormData) {
     const email = formData.get("email");
     const password = formData.get("password");
-    // const name = formData.get("name");
     console.log(prevState)
-    // console.log(username, password);
 
     if(!email || !password ) {
         return {
@@ -78,14 +74,10 @@ function submitForm(prevState: FormState, formData: FormData) {
 
 const LoginDialog =  () => {
 
-    const [formResult, setFormResult ] = useState();
     const router = useRouter()
 
     const { toggleLoginDialog, authenticated, setAuthenticated, setUser, clearData, user } = useAppStore()
     const [state, formAction, isPending] = useActionState(submitForm, initialState);
-
-    console.log(isPending)
-    console.log(state)
 
     useEffect(() => {
         if(state.success) {
@@ -135,7 +127,9 @@ const LoginDialog =  () => {
                 <input type="password" placeholder="Password" name="password" minLength={6} required className="py-2 px-3 w-full my-3 border border-gray-300" />
                 <button  type="submit" className="p-3 w-1/4 bg-violet-500 hover:bg-violet-700 hover:cursor-pointer text-white">Login</button>
                 <p className=" pt-4">Not registered! <Link href="/signup" className="cursor-pointer text-violet-500"> Signup here</Link></p>
-
+                {isPending && <p>
+                    Authenticating...
+                </p> }
             </form>
             }
 

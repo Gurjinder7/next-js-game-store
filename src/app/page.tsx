@@ -8,49 +8,16 @@ import SortGames from "@/app/components/Sort";
 import FilterGames from "@/app/components/Filter";
 import {SearchParams} from "@/utils/interface/types";
 
-
-async function signUpNewUser() {
-    "use server"
-    const cookieStore = await cookies();
-    const supabase = createClient(cookieStore)
-
-    const { data, error } = await supabase.auth.signUp({
-        email: 'valid.email1@supabase.io',
-        password: 'example-password',
-
-        options: {
-        //     emailRedirectTo: 'https://example.com/welcome',
-            data: {
-                display_name: "Supabase user",
-            }
-        },
-    })
-
-    console.log(data)
-    console.log(error)
-}
-
-
 async function searchGame(searchTerm: string = "Call") {
     "use server"
     const cookieStore = await cookies();
     const supabase = createClient(cookieStore)
 
-    // const { data, error } = await supabase.auth.signUp({
-    //     email: 'valid.email1@supabase.io',
-    //     password: 'example-password',
-    //
-    //     options: {
-    //         //     emailRedirectTo: 'https://example.com/welcome',
-    //         data: {
-    //             display_name: "Supabase user",
-    //         }
-    //     },
-    // })
     const {data:products} = await supabase.from('games').select().ilike('name',`%call%`)
 
     console.log(products)
 }
+
 export default async function Home({searchParams}: {searchParams: SearchParams}) {
 
     // console.log(searchParams)
@@ -108,9 +75,6 @@ export default async function Home({searchParams}: {searchParams: SearchParams})
 
             </div>
 
-
-            {/*<button onClick={() => signUpNewUser()}>Send sign up</button>*/}
-            {/*<Login call={signUpNewUser} />*/}
         </div>
   );
 }

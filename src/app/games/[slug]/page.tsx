@@ -1,23 +1,37 @@
 import {cookies} from "next/headers";
 import {createClient} from "@/utils/supabase/server";
 import {IProduct} from "@/utils/interface/product";
-import {Metadata} from "next";
 import {ProductCard} from "@/app/components/Card";
-import {Suspense} from "react";
+import {cache, Suspense} from "react";
 import DetailCard from "@/app/components/DetailCard";
+import {Metadata} from "next";
 
-
-async function getGameDetails(slug: string) {
+const getGameData = cache(async (slug: string) => {
     const cookieStore = await cookies();
     const supabase = createClient(cookieStore)
 
     const {data: product} = await supabase.from('games').select('*').eq('id', slug)
 
+    console.log(product)
     if (product != null) {
         return product[0]
     }
     return null;
+})
+
+export async function generateMetadata({params}: {params: {slug: string}}) :Promise<Metadata> {
+    const {slug} = await params;
+    const product = await getGameData(slug)
+
+    console.log("product", product)
+
+    return {
+        title: product?.name,
+        description: product?.genre
+    }
+
 }
+
 
 async function getSuggestedGamesByGenre(genre: string, id: number) {
     const cookieStore = await cookies();
@@ -31,16 +45,12 @@ async function getSuggestedGamesByGenre(genre: string, id: number) {
     return null;
 }
 
-export const metadata: Metadata = {
-    title: "Games",
-    description: "PS5 game"
-}
 
 const Game = async ({params}: {
     params: Promise<{ slug: string }>
 }) => {
     const {slug} = await params
-    const game: IProduct | null = await getGameDetails(slug)
+    const game: IProduct | null = await getGameData(slug)
     console.log(game)
 
     const suggestedGames = game ? await getSuggestedGamesByGenre(game?.genre, game?.id) : []
