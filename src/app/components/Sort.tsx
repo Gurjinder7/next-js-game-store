@@ -2,7 +2,11 @@
 
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { createQueryUrl } from '@/utils/helpers/urlPath';
-import {SortCategory, SortOrder, SortValue} from "@/utils/helpers/constants.ts";
+import {
+  SortCategory,
+  SortOrder,
+  SortValue,
+} from '@/utils/helpers/constants.ts';
 
 const SortGames = () => {
   const router = useRouter();
@@ -11,7 +15,6 @@ const SortGames = () => {
   const pathname = usePathname();
 
   const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-
     let selectedOption = e.target.value;
 
     let sortBy = SortCategory.name;

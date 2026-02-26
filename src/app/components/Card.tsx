@@ -12,7 +12,6 @@ export const ProductCard = ({ product }: { product: IProduct }) => {
   const { products, addProduct } = useAppStore();
 
   const addToCart = () => {
-
     const hasItem = products.filter((game: IProduct) => game.id === product.id);
 
     if (hasItem?.length) {

@@ -4,9 +4,12 @@ import ClearCart from '@/app/components/ClearCart';
 import { cookies } from 'next/headers';
 import { createClient } from '@/utils/supabase/server';
 import { LineProduct, SearchParams } from '@/utils/interface/types';
-import Stripe from 'stripe'
+import Stripe from 'stripe';
 
-const createOrder = async (cartID: string, items: Stripe.ApiList<Stripe.LineItem>) => {
+const createOrder = async (
+  cartID: string,
+  items: Stripe.ApiList<Stripe.LineItem>,
+) => {
   const coookieStore = await cookies();
   const supabase = createClient(coookieStore);
 
@@ -55,7 +58,7 @@ export default async function Success({
 
   if (status === 'complete') {
     if (cart && line_items) {
-      await createOrder(cart, line_items );
+      await createOrder(cart, line_items);
     }
 
     return (

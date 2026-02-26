@@ -14,7 +14,10 @@ const Header = () => {
 
   return (
     <>
-      <nav role="navigation" className='p-3 navbar navbar-expand-lg navbar-dark bg-dark h-[8vh] flex justify-between bg-violet-600 text-white'>
+      <nav
+        role='navigation'
+        className='p-3 navbar navbar-expand-lg navbar-dark bg-dark h-[8vh] flex justify-between bg-violet-600 text-white'
+      >
         <div className='flex items-center' title='Guinea GameStore'>
           <img width={30} height={30} src='/guinea.svg' alt='logo' />
           <span className='font-bold text-3xl'>GG</span>

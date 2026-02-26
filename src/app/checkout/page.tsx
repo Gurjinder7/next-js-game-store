@@ -3,13 +3,11 @@ import { createClient } from '@/utils/supabase/server';
 import { CartItem, SearchParams } from '@/utils/interface/types';
 import { IProduct } from '@/utils/interface/product';
 import Link from 'next/link';
-import {redirect} from "next/navigation";
+import { redirect } from 'next/navigation';
 
 const createCart = async (items: IProduct[]) => {
-
   const cookieStore = await cookies();
   const supabase = createClient(cookieStore);
-
 
   const { data } = await supabase.auth.getUser();
 
@@ -58,7 +56,7 @@ export default async function IndexPage({
   if (items) {
     cartId = await createCart(JSON.parse(items));
   } else {
-      redirect('/')
+    redirect('/');
   }
 
   if (canceled) {

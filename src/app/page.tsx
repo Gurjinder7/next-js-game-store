@@ -44,7 +44,10 @@ export default async function Home({
         </div>
       </div>
       <hr />
-      <main role="main" className='flex justify-between items-center gap-10 flex-wrap p-5 max-sm:justify-center'>
+      <main
+        role='main'
+        className='flex justify-between items-center gap-10 flex-wrap p-5 max-sm:justify-center'
+      >
         <Suspense fallback={<div>Loading...</div>}>
           {products?.map((product: IProduct) => (
             <ProductCard product={product} key={product.id} />

@@ -69,7 +69,6 @@ const Signup = () => {
     if (state.success) {
       handleSubmit(state)
         .then((res) => {
-
           setAuthenticated(true);
           setUser(res);
 

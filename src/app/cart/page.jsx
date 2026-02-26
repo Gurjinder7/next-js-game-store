@@ -10,11 +10,9 @@ export const CartPage = () => {
   const { products, authenticated } = useAppStore();
 
   useEffect(() => {
-
     setTotal(0);
     let itemsTotal = 0;
     products.map((product) => {
-
       itemsTotal += product.price;
     });
 
