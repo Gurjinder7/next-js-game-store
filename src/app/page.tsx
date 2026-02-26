@@ -18,7 +18,6 @@ export default async function Home({
   const cookieStore = await cookies();
   const supabase = createClient(cookieStore);
 
-  console.log(sortBy, sortOrder);
   let query = supabase
     .from('games')
     .select()
@@ -45,13 +44,13 @@ export default async function Home({
         </div>
       </div>
       <hr />
-      <div className='flex justify-between items-center gap-10 flex-wrap p-5 max-sm:justify-center'>
+      <main role="main" className='flex justify-between items-center gap-10 flex-wrap p-5 max-sm:justify-center'>
         <Suspense fallback={<div>Loading...</div>}>
           {products?.map((product: IProduct) => (
             <ProductCard product={product} key={product.id} />
           ))}
         </Suspense>
-      </div>
+      </main>
     </div>
   );
 }

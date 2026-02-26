@@ -10,7 +10,7 @@ const DetailCard = (props: { game: IProduct | null }) => {
   const { products, addProduct } = useAppStore();
 
   const addToCart = (product: IProduct | null) => {
-    console.log('addToCart');
+
     if (product) {
       const hasItem = products.filter(
         (game: IProduct) => game.id === product.id,

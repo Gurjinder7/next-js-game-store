@@ -7,12 +7,11 @@ import {SortCategory, SortOrder, SortValue} from "@/utils/helpers/constants.ts";
 const SortGames = () => {
   const router = useRouter();
 
-  console.log(usePathname(), useSearchParams().toString());
   const searchParams = useSearchParams().toString();
   const pathname = usePathname();
 
   const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    console.log('handleSortChange', e.target.value);
+
     let selectedOption = e.target.value;
 
     let sortBy = SortCategory.name;
@@ -37,6 +36,7 @@ const SortGames = () => {
       data-testid='game-sort'
       onChange={handleSortChange}
       className='border-2 border-gray-200 p-2'
+      aria-label='Sort games'
     >
       <optgroup label='Name'>
         <option value={SortValue.opt0}>Asc</option>

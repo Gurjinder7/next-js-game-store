@@ -30,6 +30,7 @@ const FilterGames = () => {
         data-testid='game-filter'
         onChange={handleFilterChange}
         className='border-2 border-gray-200 p-2'
+        aria-label='Filter Games By Genre'
       >
         <option value={GENRE.all}>{GENRE.all}</option>
         <option value={GENRE.action}>{GENRE.action}</option>
