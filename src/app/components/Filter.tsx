@@ -12,13 +12,13 @@ const FilterGames = () => {
     if (selection === GENRE.all) {
       filter = '';
     } else if (selection === GENRE.action) {
-      filter = 'Action';
+      filter = GENRE.action;
     } else if (selection === GENRE.shooter) {
-      filter = 'Shooter';
+      filter = GENRE.shooter;
     } else if (selection === GENRE.rpg) {
-      filter = 'RPG';
+      filter = GENRE.rpg;
     } else {
-      filter = 'Adventure';
+      filter = GENRE.adventure;
     }
 
     router.push(`/${pathName}?filter=${filter}`);
@@ -28,8 +28,6 @@ const FilterGames = () => {
     <article className=''>
       <select
         data-testid='game-filter'
-        name=''
-        id=''
         onChange={handleFilterChange}
         className='border-2 border-gray-200 p-2'
       >

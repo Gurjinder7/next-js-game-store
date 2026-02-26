@@ -1,7 +1,9 @@
+import Loader from "@/app/components/Loader.tsx";
+
 const GameLoader = () => {
   return (
     <div className='flex w-full justify-center'>
-      <div className='loader'></div>
+      <Loader />
     </div>
   );
 };

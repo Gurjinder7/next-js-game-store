@@ -16,8 +16,6 @@ const createOrder = async (cartID: string, items: any) => {
     games += item.description + ', ';
   });
 
-  console.log(price);
-  console.log(items?.data.length);
   const { data: user } = await supabase.auth.getUser();
 
   const { error } = await supabase.from('orders').insert({
@@ -49,9 +47,6 @@ export default async function Success({
   } = await stripe.checkout.sessions.retrieve(session_id as string, {
     expand: ['line_items', 'payment_intent'],
   });
-
-  console.log(status);
-  console.log(line_items);
 
   if (status === 'open') {
     return redirect('/cart');

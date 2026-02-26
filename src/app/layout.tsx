@@ -33,7 +33,6 @@ export default function RootLayout({
         <Header />
         <section className='h-[87vh] overflow-auto'>{children}</section>
         <Footer />
-
         <Dialog />
       </body>
     </html>

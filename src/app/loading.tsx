@@ -1,7 +1,9 @@
+import Loader from "@/app/components/Loader.tsx";
+
 const HomePageLoader = () => {
   return (
     <div className='flex justify-center items-center gap-10'>
-      <div className='loader'></div>
+      <Loader />
     </div>
   );
 };

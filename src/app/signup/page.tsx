@@ -33,8 +33,6 @@ async function handleSubmit(formState: FormState) {
       },
     });
 
-    console.log(data);
-
     return data ? data : error;
   }
 }
@@ -43,8 +41,6 @@ function submitForm(prevState: FormState, formData: FormData) {
   const email = formData.get('email');
   const password = formData.get('password');
   const name = formData.get('name');
-  console.log(prevState);
-  // console.log(username, password);
 
   if (!email || !password || !name) {
     return {
@@ -67,14 +63,13 @@ const Signup = () => {
   const { setAuthenticated, setUser, products, toggleLoginDialog } =
     useAppStore();
   const router = useRouter();
-
   const [state, formAction] = useActionState(submitForm, initialState);
 
   useEffect(() => {
     if (state.success) {
       handleSubmit(state)
         .then((res) => {
-          console.log(res);
+
           setAuthenticated(true);
           setUser(res);
 

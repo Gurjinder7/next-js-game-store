@@ -4,6 +4,7 @@ import { IProduct } from '@/utils/interface/product';
 import useAppStore from '../../../store';
 import Link from 'next/link';
 import Image from 'next/image';
+import { FallBackUrl } from '@/utils/helpers/constants.ts';
 
 export const ProductCard = ({ product }: { product: IProduct }) => {
   const { name, id, price, thumbnail } = product;
@@ -11,7 +12,7 @@ export const ProductCard = ({ product }: { product: IProduct }) => {
   const { products, addProduct } = useAppStore();
 
   const addToCart = () => {
-    console.log('addToCart');
+
     const hasItem = products.filter((game: IProduct) => game.id === product.id);
 
     if (hasItem?.length) {
@@ -30,7 +31,10 @@ export const ProductCard = ({ product }: { product: IProduct }) => {
         alt={name}
         width={100}
         height={100}
-        loading="eager"
+        loading='eager'
+        placeholder='blur'
+        blurDataURL={FallBackUrl}
+        aria-label='Product Image'
       />
       <h3 className='text-2xl text-center text-black'>{name}</h3>
       <p className='text-2xl font-bold text-center text-black'>${price}</p>

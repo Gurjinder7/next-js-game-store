@@ -15,7 +15,6 @@ const getGameData = cache(async (slug: string) => {
     .select('*')
     .eq('id', slug);
 
-  console.log(product);
   if (product != null) {
     return product[0];
   }
@@ -29,8 +28,6 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const product = await getGameData(slug);
-
-  console.log('product', product);
 
   return {
     title: product?.name,
@@ -57,13 +54,11 @@ async function getSuggestedGamesByGenre(genre: string, id: number) {
 const Game = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
   const game: IProduct | null = await getGameData(slug);
-  console.log(game);
 
   const suggestedGames = game
     ? await getSuggestedGamesByGenre(game?.genre, game?.id)
     : [];
 
-  console.log(suggestedGames);
   return (
     <div className='w-full flex flex-col items-center p-5'>
       <DetailCard game={game ? game : null} />
