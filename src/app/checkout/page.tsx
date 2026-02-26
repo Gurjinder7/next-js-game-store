@@ -3,6 +3,7 @@ import { createClient } from '@/utils/supabase/server';
 import { CartItem, SearchParams } from '@/utils/interface/types';
 import { IProduct } from '@/utils/interface/product';
 import Link from 'next/link';
+import {redirect} from "next/navigation";
 
 const createCart = async (items: IProduct[]) => {
 
@@ -56,7 +57,10 @@ export default async function IndexPage({
 
   if (items) {
     cartId = await createCart(JSON.parse(items));
+  } else {
+      redirect('/')
   }
+
   if (canceled) {
     console.log(
       'Order canceled -- continue to shop around and checkout when you’re ready.',

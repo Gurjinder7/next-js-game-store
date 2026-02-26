@@ -4,14 +4,14 @@ import { UserInfo } from '@/utils/interface/types';
 export type GameStoreState = {
   products: IProduct[];
   authenticated: boolean;
-  user: UserInfo | null;
+  user: UserInfo | null | unknown;
   sidebar: boolean;
   loginDialog: boolean;
   setAuthenticated: (status: boolean) => void;
   addProduct: (product: IProduct) => void;
   removeProduct: (product: IProduct) => void;
   toggleLoginDialog: (status: boolean) => void;
-  setUser: (user: UserInfo) => void;
+  setUser: (user: unknown) => void;
   clearData: () => void;
   clearProducts: () => void;
   toggleSidebar: (status: boolean) => void;

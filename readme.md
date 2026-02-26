@@ -1,5 +1,5 @@
 
-The app is deployed at: https://next-js-game-store.vercel.app/orders
+The app is deployed at: https://next-js-game-store.vercel.app/
 
 ![Screenshot_20260217_213449.png](public/Screenshot_20260217_213449.png)
 # A Next.js e-commerce store with following features
@@ -35,7 +35,7 @@ npm run dev
 #### Project will run on localhost:3000
 
 
-## Lightout results of deployed app
+## Lighthouse results of deployed app
 ![Screenshot_20260226_180037-1.png](public/Screenshot_20260226_180037-1.png)
 
 
