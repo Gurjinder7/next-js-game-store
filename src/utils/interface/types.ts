@@ -49,6 +49,7 @@ export type LineProduct = {
   price: {};
   quantity: number;
 };
+
 export type LineItem = {
   data: LineProduct[];
   has_more: boolean;

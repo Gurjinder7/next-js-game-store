@@ -10,20 +10,17 @@ export const CartPage = () => {
   const { products, authenticated } = useAppStore();
 
   useEffect(() => {
-    console.log(products);
+
     setTotal(0);
     let itemsTotal = 0;
     products.map((product) => {
-      console.log(total);
+
       itemsTotal += product.price;
     });
 
-    console.log(itemsTotal, Number(parseFloat(itemsTotal).toFixed(2)));
     setTotal(Number(parseFloat(itemsTotal).toFixed(2)));
   }, [products]);
 
-  // console.log(products)
-  console.log(typeof total);
   return (
     <div className='p-3 flex flex-col justify-center items-center'>
       {!authenticated && products.length > 0 && (

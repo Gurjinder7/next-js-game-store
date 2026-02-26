@@ -36,7 +36,7 @@ export const ProductCard = ({ product }: { product: IProduct }) => {
         blurDataURL={FallBackUrl}
         aria-label='Product Image'
       />
-      <h3 className='text-2xl text-center text-black'>{name}</h3>
+      <h3 className='text-xl text-center text-black text-wrap'>{name}</h3>
       <p className='text-2xl font-bold text-center text-black'>${price}</p>
       <button
         className='bg-amber-700 text-white py-2 my-2 hover:bg-amber-600 hover:cursor-pointer'

@@ -59,7 +59,7 @@ const Header = () => {
             </Link>
           </span>
         </div>
-        {/*</div>*/}
+
         <div className='max-sm:block sm:hidden'>
           <img
             src='/ham.svg'

@@ -7,12 +7,12 @@ export type GameStoreState = {
   user: UserInfo | null;
   sidebar: boolean;
   loginDialog: boolean;
-  setAuthenticated: (b: boolean) => void;
+  setAuthenticated: (status: boolean) => void;
   addProduct: (product: IProduct) => void;
   removeProduct: (product: IProduct) => void;
   toggleLoginDialog: (status: boolean) => void;
-  setUser: (user: any) => void;
+  setUser: (user: UserInfo) => void;
   clearData: () => void;
   clearProducts: () => void;
-  toggleSidebar: (b: boolean) => void;
+  toggleSidebar: (status: boolean) => void;
 };

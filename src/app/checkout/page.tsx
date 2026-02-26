@@ -5,27 +5,13 @@ import { IProduct } from '@/utils/interface/product';
 import Link from 'next/link';
 
 const createCart = async (items: IProduct[]) => {
-  console.log(items);
+
   const cookieStore = await cookies();
   const supabase = createClient(cookieStore);
 
-  // console.log(cookieStore.getAll())
+
   const { data } = await supabase.auth.getUser();
 
-  // const {data: cart, error} = await supabase.from('cart')
-  //     .select()
-  //     .eq('user_id',data?.user?.id)
-  //     .order('created_at', {ascending: false})
-  //     .single()
-  //
-  // console.log(data?.user?.id)
-  // console.log(cart)
-  //
-  // if(cart?.id) {
-  //
-  // } else {
-  //
-  // }
   const { data: cartData, error: someError } = await supabase
     .from('cart')
     .insert({
@@ -52,14 +38,11 @@ const createCart = async (items: IProduct[]) => {
   const { error: cartItemsError } = await supabase
     .from('cart_item')
     .insert(games);
-  // //
+
   if (cartItemsError) {
     throw new Error(cartItemsError.message);
   }
-  console.log(cartData, someError);
-  // console.log(cartItemsSuccess, cartItemsError)
 
-  // const {data, error} = await supabase.from('cart_items').insert()
   return cartData?.id;
 };
 
@@ -70,7 +53,7 @@ export default async function IndexPage({
 }) {
   const { canceled, items } = await searchParams;
   let cartId = null;
-  console.log(items);
+
   if (items) {
     cartId = await createCart(JSON.parse(items));
   }
