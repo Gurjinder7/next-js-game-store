@@ -22,6 +22,12 @@ The app is deployed at: https://next-js-game-store.vercel.app/
 * CI/CD pipeline (GitHub Actions)
 * SEO work on SSR pages - home, product details
 
+## Upcoming changes
+* Saving user cart and resuming it on login
+* Combining filtering, sorting and searching together
+* Cancel payment in Stripe screen
+* Order details screen
+
 
 ## Getting Started
 
