@@ -30,6 +30,7 @@ export const ProductCard = ({ product }: { product: IProduct }) => {
         alt={name}
         width={100}
         height={100}
+        loading="eager"
       />
       <h3 className='text-2xl text-center text-black'>{name}</h3>
       <p className='text-2xl font-bold text-center text-black'>${price}</p>

@@ -13,7 +13,6 @@ export default async function Home({
 }: {
   searchParams: SearchParams;
 }) {
-
   const { query: search, sortBy, sortOrder, filter } = await searchParams;
 
   const cookieStore = await cookies();

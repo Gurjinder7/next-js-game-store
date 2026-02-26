@@ -5,7 +5,7 @@ import { persist, createJSONStorage } from 'zustand/middleware';
 
 const useAppStore = create<GameStoreState>()(
   persist(
-    (set, get) => ({
+    (set) => ({
       products: [],
       authenticated: false,
       user: null,
