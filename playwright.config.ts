@@ -8,7 +8,6 @@ dotenv.config({ path: path.resolve(__dirname, '.env.local') });
  * https://github.com/motdotla/dotenv
  */
 
-
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
@@ -49,19 +48,19 @@ export default defineConfig({
     //   name: 'webkit',
     //   use: { ...devices['Desktop Safari'] },
     // },
-      /* Test against mobile viewports. */
-      // {
-      //     name: 'Mobile Chrome',
-      //     use: { ...devices['Pixel 5'] },
-      // },
-
+    /* Test against mobile viewports. */
+    // {
+    //     name: 'Mobile Chrome',
+    //     use: { ...devices['Pixel 5'] },
+    // },
   ],
 
   /* Run your local dev server before starting the tests */
-  webServer: [{
-    command: 'npm run dev',
-    url: 'http://localhost:3000',
-    reuseExistingServer: !process.env.CI,
-  },
+  webServer: [
+    {
+      command: 'npm run dev',
+      url: 'http://localhost:3000',
+      reuseExistingServer: !process.env.CI,
+    },
   ],
 });

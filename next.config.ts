@@ -1,17 +1,17 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   /* config options here */
-    output: "standalone",
-    images: {
-        remotePatterns: [
-            {
-                protocol: 'https',
-                hostname: '*.supabase.co',
-                pathname: '/storage/**'
-            }
-        ]
-    }
+  output: 'standalone',
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '*.supabase.co',
+        pathname: '/storage/**',
+      },
+    ],
+  },
 };
 
 export default nextConfig;

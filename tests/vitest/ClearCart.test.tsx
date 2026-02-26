@@ -1,6 +1,6 @@
-import {expect, test} from "vitest";
-import { render } from 'vitest-browser-react'
-import ClearCart from "../../src/app/components/ClearCart.tsx";
+import { expect, test } from 'vitest';
+import { render } from 'vitest-browser-react';
+import ClearCart from '../../src/app/components/ClearCart.tsx';
 
 // function sum(...args: number[]) {
 //     return args.reduce((a, b) => a + b);
@@ -12,15 +12,17 @@ import ClearCart from "../../src/app/components/ClearCart.tsx";
 //
 
 test('ClearCart component rendering', async () => {
-    const screen = await render(<ClearCart />)
+  const screen = await render(<ClearCart />);
 
-    // await screen.getByRole('button', { name: 'Increment' }).click()
+  // await screen.getByRole('button', { name: 'Increment' }).click()
 
-    await expect.element(screen.getByText('Your order has been placed!')).toBeVisible()
-})
+  await expect
+    .element(screen.getByText('Your order has been placed!'))
+    .toBeVisible();
+});
 
 // Component snapshot test
 test('ClearCart component snapshot', () => {
-    const asFragment = render(<ClearCart />)
-    expect(asFragment).toMatchSnapshot()
-})
+  const asFragment = render(<ClearCart />);
+  expect(asFragment).toMatchSnapshot();
+});

@@ -7,7 +7,7 @@ test('Home page has a title that contains GameStore', async ({ page }) => {
   await expect(page).toHaveTitle(/GameStore/);
 });
 
-test(   'See details of a listed game from Home page', async ({ page }) => {
+test('See details of a listed game from Home page', async ({ page }) => {
   await page.goto('http://localhost:3000');
 
   // Expect Home link to appear
@@ -16,22 +16,21 @@ test(   'See details of a listed game from Home page', async ({ page }) => {
   // 16 listed games
   await expect(page.getByRole('link', { name: 'See details' })).toHaveCount(16);
 
-    const element = await page.getByRole('link', { name: 'See details' }).first();
+  const element = await page.getByRole('link', { name: 'See details' }).first();
 
-    await expect(element).toBeVisible();
+  await expect(element).toBeVisible();
 
-    await element.scrollIntoViewIfNeeded();
+  await element.scrollIntoViewIfNeeded();
 
-    await element.click();
+  await element.click();
 
-    // IF click is not working due to overlay issue in next.js - use one of the following
-    // await ele.click({force: true}); - not preferred
-    // await ele.dispatchEvent('click') - preferred
+  // IF click is not working due to overlay issue in next.js - use one of the following
+  // await ele.click({force: true}); - not preferred
+  // await ele.dispatchEvent('click') - preferred
 
-    // waiting for the navigation to complete
-    await page.waitForURL('/games/5');
+  // waiting for the navigation to complete
+  await page.waitForURL('/games/5');
 
-    // comparing navigated link to the expected link
-    await expect(page).toHaveURL('/games/5');
-
+  // comparing navigated link to the expected link
+  await expect(page).toHaveURL('/games/5');
 });

@@ -1,18 +1,12 @@
-"use client"
+'use client';
 
-import useAppStore from "../../../store";
-import LoginDialog from "@/app/components/Login";
+import useAppStore from '../../../store';
+import LoginDialog from '@/app/components/Login';
 
 const Dialog = () => {
-    const { loginDialog, toggleLoginDialog } = useAppStore()
+  const { loginDialog, toggleLoginDialog } = useAppStore();
 
-    return (
-        <>
-            {
-                loginDialog && <LoginDialog />
-            }
-        </>
-    )
-}
+  return <>{loginDialog && <LoginDialog />}</>;
+};
 
 export default Dialog;
