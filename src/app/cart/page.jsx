@@ -1,24 +1,9 @@
 'use client';
-// export const metadata = {
-//     title: 'Your Cart',
-//     description:'cart'
-// }
-
-import { createClient } from '../../utils/supabase/client';
-
-const addCartToSupabase = async (userId) => {
-  const supabase = await createClient();
-
-  const { data, error } = await supabase.from('cart').insert({
-    user_id: userId,
-  });
-};
 
 import useAppStore from '../../../store';
 import { Activity, Suspense, useEffect, useState } from 'react';
 import CartItem from '../components/Cart';
 import Link from 'next/link';
-import { types } from 'node:util';
 
 export const CartPage = () => {
   const [total, setTotal] = useState(0);
@@ -29,7 +14,6 @@ export const CartPage = () => {
     setTotal(0);
     let itemsTotal = 0;
     products.map((product) => {
-      // const newTotal = total + product.price;
       console.log(total);
       itemsTotal += product.price;
     });

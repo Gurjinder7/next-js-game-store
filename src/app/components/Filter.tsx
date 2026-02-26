@@ -4,12 +4,11 @@ import { GENRE } from '@/utils/helpers/constants';
 
 const FilterGames = () => {
   const router = useRouter();
-  const searchParams = useSearchParams().toString();
   const pathName = usePathname();
 
   const handleFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     let selection = event.target.value;
-    let filter = '';
+    let filter;
     if (selection === GENRE.all) {
       filter = '';
     } else if (selection === GENRE.action) {

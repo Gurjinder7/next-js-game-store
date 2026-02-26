@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest';
-import { ProductCard } from '../../src/app/components/Card.tsx';
+import { ProductCard } from '@/app/components/Card.tsx';
 import { render, screen } from '@testing-library/react';
 
 const product = {

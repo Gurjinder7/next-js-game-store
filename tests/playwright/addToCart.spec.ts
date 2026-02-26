@@ -3,7 +3,7 @@ import { test, expect } from 'playwright/test';
 test('Add to 2 games to cart, check cart items and navigate to cart ', async ({
   page,
 }) => {
-  await page.goto('http://localhost:3000/');
+  await page.goto('');
 
   await expect(page.locator('.GameCard')).toHaveCount(16);
 

@@ -1,27 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { cookies, headers } from 'next/headers';
-
 import { stripe } from '@/utils/Stripe/stripe';
 import { createClient } from '@/utils/supabase/server';
 import { IProduct } from '@/utils/interface/product';
-import { ErrorResponse } from '@/utils/interface/types';
-
-// const product = await stripe.products.create({
-//     name: 'T-shirt',
-// });
-//
-// const price = await stripe.prices.create({
-//     product: '{{PRODUCT_ID}}',
-//     unit_amount: 2000,
-//     currency: 'usd',
-// });
 
 const getCartItems = async (cartId: string) => {
   const cookieStore = await cookies();
   const supabase = createClient(cookieStore);
 
   console.log(cartId);
-  const { data: cartItems, error } = await supabase
+  const { data: cartItems } = await supabase
     .from('cart_item')
     .select('game_id')
     .eq('cart_id', cartId);
@@ -49,7 +37,6 @@ export async function POST(req: NextRequest) {
     const origin = headersList.get('origin');
     let lineItems: IProduct[] = [];
     let cartId = null;
-    // console.log(req)
     try {
       const body = await req.text();
       console.log(body);
@@ -58,10 +45,8 @@ export async function POST(req: NextRequest) {
     } catch (err) {
       console.log(err);
     }
-    // console.log('headereeee',origin)
 
     // Create Checkout Sessions from body params.
-
     const finalItems = lineItems.map((item) => ({
       price_data: {
         currency: 'gbp',
@@ -75,19 +60,6 @@ export async function POST(req: NextRequest) {
 
     const session = await stripe.checkout.sessions.create({
       line_items: finalItems,
-      //     [
-      //
-      //     {
-      //         price_data: {
-      //             currency: 'gbp',
-      //             product_data: {
-      //                 name: 'T-shirt',
-      //             },
-      //             unit_amount: 2000,
-      //         },
-      //         quantity: 1,
-      //     },
-      // ],
       mode: 'payment',
       success_url: `${origin}/success?session_id={CHECKOUT_SESSION_ID}&cart=${cartId}`,
       customer_email: 'test@gmail.com',

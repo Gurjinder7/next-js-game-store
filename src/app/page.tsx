@@ -3,23 +3,10 @@ import { cookies } from 'next/headers';
 import { ProductCard } from '@/app/components/Card';
 import { IProduct } from '@/utils/interface/product';
 import SearchBar from '@/app/components/SearchBar';
-import { Suspense, use } from 'react';
+import { Suspense } from 'react';
 import SortGames from '@/app/components/Sort';
 import FilterGames from '@/app/components/Filter';
 import { SearchParams } from '@/utils/interface/types';
-
-async function searchGame(searchTerm: string = 'Call') {
-  'use server';
-  const cookieStore = await cookies();
-  const supabase = createClient(cookieStore);
-
-  const { data: products } = await supabase
-    .from('games')
-    .select()
-    .ilike('name', `%call%`);
-
-  console.log(products);
-}
 
 export default async function Home({
   searchParams,
@@ -48,16 +35,6 @@ export default async function Home({
   }
 
   const { data: products } = await query;
-  // supabase.from('games')
-  // .select()
-  // .ilike('name',`%${search ? search : ''}%`)
-  // .order(sortBy ?? 'name', {ascending: sortOrder === 'asc' || sortOrder === undefined ? true : false})
-
-  // console.log(search?.query);
-
-  console.log(search);
-
-  console.log(products);
 
   return (
     <div>

@@ -17,13 +17,14 @@ async function getOrders() {
     .select()
     .eq('user_id', data?.user?.id);
 
-  console.log(data);
-  console.log(orders);
+  if (orderError) {
+    throw new Error(orderError.message);
+  }
   return orders;
 }
 
 const OrdersPage = async () => {
-  const orders = await getOrders();
+  const orders: OrderItem[] | string = await getOrders();
 
   return (
     <section

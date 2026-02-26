@@ -1,5 +1,4 @@
-import { createServerClient, type CookieOptions } from '@supabase/ssr';
-import { cookies } from 'next/headers';
+import { createServerClient } from '@supabase/ssr';
 import { ReadonlyRequestCookies } from 'next/dist/server/web/spec-extension/adapters/request-cookies';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;

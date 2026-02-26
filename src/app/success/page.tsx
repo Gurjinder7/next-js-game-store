@@ -3,7 +3,7 @@ import { stripe } from '@/utils/Stripe/stripe';
 import ClearCart from '@/app/components/ClearCart';
 import { cookies } from 'next/headers';
 import { createClient } from '@/utils/supabase/server';
-import { LineItem, LineProduct, SearchParams } from '@/utils/interface/types';
+import { LineProduct, SearchParams } from '@/utils/interface/types';
 
 const createOrder = async (cartID: string, items: any) => {
   const coookieStore = await cookies();
@@ -20,7 +20,7 @@ const createOrder = async (cartID: string, items: any) => {
   console.log(items?.data.length);
   const { data: user } = await supabase.auth.getUser();
 
-  const { data, error } = await supabase.from('orders').insert({
+  const { error } = await supabase.from('orders').insert({
     cart_id: cartID,
     user_id: user?.user?.id,
     qty: items?.data?.length,
@@ -42,7 +42,6 @@ export default async function Success({
     throw new Error('Please provide a valid session_id (`cs_test_...`)');
   }
 
-  // console.log(searchParams)
   const {
     status,
     // customer_details: {email: customerEmail},

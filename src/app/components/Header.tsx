@@ -1,51 +1,16 @@
 'use client';
 import Link from 'next/link';
 import useAppStore from '../../../store';
-import { createClient } from '@/utils/supabase/client';
-import { useRouter } from 'next/navigation';
-
-// const router = useRouter();
-
-async function logOut() {
-  const supabase = await createClient();
-  // const {clearData } = useAppStore()
-
-  const { error } = await supabase.auth.signOut();
-  console.log('Sign Out');
-  console.log(error);
-  // clearData()
-
-  if (error) {
-    return new Error(error.message);
-  }
-  return true;
-}
 
 const Header = () => {
   const {
     products,
-    user,
     toggleLoginDialog,
     loginDialog,
     authenticated,
-    clearData,
     sidebar,
     toggleSidebar,
   } = useAppStore();
-  const router = useRouter();
-
-  const clearOutUser = async () => {
-    const status = await logOut();
-
-    if (typeof status === 'boolean') {
-      clearData();
-      router.push('/');
-    } else {
-      alert(status);
-    }
-  };
-
-  console.log(user);
 
   return (
     <>
@@ -54,7 +19,6 @@ const Header = () => {
           <img width={30} height={30} src='/guinea.svg' alt='logo' />
           <span className='font-bold text-3xl'>GG</span>
         </div>
-        {/*<div className="max-sm:hidden sm:block bg-red-300">*/}
 
         <div className='max-sm:hidden sm:flex gap-5 text-white flex-nowrap'>
           <Link href='/' className='flex gap-2 justify-around items-center'>
