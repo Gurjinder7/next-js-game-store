@@ -5,6 +5,7 @@ import useAppStore from '../../../store';
 import { createClient } from '@/utils/supabase/client';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { UserObj } from '@/utils/interface/State.ts';
 
 interface FormState {
   success: boolean;
@@ -22,7 +23,6 @@ async function logOut() {
   const supabase = await createClient();
 
   const { error } = await supabase.auth.signOut();
-  console.log('Sign Out');
   console.log(error);
 
   if (error) {
@@ -40,8 +40,6 @@ async function handleSubmit(formState: FormState) {
       password: formState.password ? formState.password?.toString() : '',
     });
 
-    console.log(data);
-
     return data ? data : error;
   }
 }
@@ -49,7 +47,6 @@ async function handleSubmit(formState: FormState) {
 function submitForm(prevState: FormState, formData: FormData) {
   const email = formData.get('email');
   const password = formData.get('password');
-  console.log(prevState);
 
   if (!email || !password) {
     return {
@@ -86,9 +83,9 @@ const LoginDialog = () => {
     if (state.success) {
       handleSubmit(state)
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           setAuthenticated(true);
-          setUser(res);
+          setUser(res as UserObj);
           toggleLoginDialog(false);
         })
         .catch((err) => console.log(err));
@@ -106,7 +103,6 @@ const LoginDialog = () => {
     }
   };
 
-  console.log(state);
   return (
     <article className='fixed h-[100vh] w-[100vw] top-0 p-5 flex flex-col justify-center items-center bg-violet-100'>
       {authenticated ? (

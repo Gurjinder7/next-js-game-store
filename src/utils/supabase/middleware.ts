@@ -35,8 +35,7 @@ export const updateSession = async (request: NextRequest) => {
 
   if (
     (request.nextUrl.pathname.startsWith('/orders') ||
-      request.nextUrl.pathname.startsWith('/checkout') ||
-      request.nextUrl.pathname.startsWith('/orders')) &&
+      request.nextUrl.pathname.startsWith('/checkout')) &&
     user.error
   ) {
     return NextResponse.redirect(new URL('/', request.url));

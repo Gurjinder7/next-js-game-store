@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { IProduct } from '@/utils/interface/product';
-import { GameStoreState } from '@/utils/interface/State';
+import { GameStoreState, UserObj } from '@/utils/interface/State';
 import { persist, createJSONStorage } from 'zustand/middleware';
 
 const useAppStore = create<GameStoreState>()(
@@ -25,7 +25,7 @@ const useAppStore = create<GameStoreState>()(
       },
       toggleLoginDialog: (status: boolean) =>
         set(() => ({ loginDialog: status })),
-      setUser: (user) => set(() => ({ user: user })),
+      setUser: (user: UserObj) => set(() => ({ user: user })),
       clearData: () =>
         set(() => ({
           user: null,

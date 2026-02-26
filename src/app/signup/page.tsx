@@ -3,6 +3,7 @@ import { createClient } from '@/utils/supabase/client';
 import { useActionState, useEffect } from 'react';
 import useAppStore from '../../../store';
 import { useRouter } from 'next/navigation';
+import { UserObj } from '@/utils/interface/State.ts';
 
 interface FormState {
   success: boolean;
@@ -70,7 +71,7 @@ const Signup = () => {
       handleSubmit(state)
         .then((res) => {
           setAuthenticated(true);
-          setUser(res);
+          setUser(res as UserObj);
 
           if (products.length > 0) {
             router.push('/cart');
