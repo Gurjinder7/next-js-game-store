@@ -13,11 +13,9 @@ export default async function Home({
 }: {
   searchParams: SearchParams;
 }) {
-  // console.log(searchParams)
 
   const { query: search, sortBy, sortOrder, filter } = await searchParams;
 
-  // const search = use(searchParams)
   const cookieStore = await cookies();
   const supabase = createClient(cookieStore);
 
@@ -27,7 +25,7 @@ export default async function Home({
     .select()
     .ilike('name', `%${search ? search : ''}%`)
     .order(sortBy ?? 'name', {
-      ascending: sortOrder === 'asc' || sortOrder === undefined ? true : false,
+      ascending: sortOrder === 'asc' || sortOrder === undefined,
     });
 
   if (filter) {
@@ -48,7 +46,7 @@ export default async function Home({
         </div>
       </div>
       <hr />
-      <div className='flex justify-between items-center gap-10 flex-wrap p-5 max-sm: justify-center'>
+      <div className='flex justify-between items-center gap-10 flex-wrap p-5 max-sm:justify-center'>
         <Suspense fallback={<div>Loading...</div>}>
           {products?.map((product: IProduct) => (
             <ProductCard product={product} key={product.id} />

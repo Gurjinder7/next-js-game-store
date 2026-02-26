@@ -12,10 +12,8 @@ const useAppStore = create<GameStoreState>()(
       sidebar: false,
       loginDialog: false,
       setAuthenticated: (status: boolean) =>
-        set((state: GameStoreState) => ({ authenticated: status })),
+        set(() => ({ authenticated: status })),
       addProduct: (product: IProduct) => {
-        console.log(product);
-
         set((state: GameStoreState) => ({
           products: [...state.products, product],
         }));
@@ -26,18 +24,17 @@ const useAppStore = create<GameStoreState>()(
         }));
       },
       toggleLoginDialog: (status: boolean) =>
-        set((state: GameStoreState) => ({ loginDialog: status })),
-      setUser: (user) => set((state: GameStoreState) => ({ user: user })),
+        set(() => ({ loginDialog: status })),
+      setUser: (user) => set(() => ({ user: user })),
       clearData: () =>
-        set((state: GameStoreState) => ({
+        set(() => ({
           user: null,
           products: [],
           authenticated: false,
           loginDialog: false,
         })),
-      clearProducts: () => set((state: GameStoreState) => ({ products: [] })),
-      toggleSidebar: (status: boolean) =>
-        set((state: GameStoreState) => ({ sidebar: status })),
+      clearProducts: () => set(() => ({ products: [] })),
+      toggleSidebar: (status: boolean) => set(() => ({ sidebar: status })),
     }),
     {
       name: 'game-store-storage',

@@ -1,5 +1,5 @@
 'use client';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { GENRE } from '@/utils/helpers/constants';
 
 const FilterGames = () => {
