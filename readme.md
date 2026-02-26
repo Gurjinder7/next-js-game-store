@@ -1,13 +1,13 @@
 
 The app is deployed at: https://next-js-game-store.vercel.app/orders
+
 ![Screenshot_20260217_213449.png](public/Screenshot_20260217_213449.png)
 # A Next.js e-commerce store with following features
-* Product listing (sorting and filtering)
+* Product listing (searching, sorting and filtering)
 * Product suggestions
 * Cart
 * Checkout with stripe payment gateway
 * User orders listed
-* Cart saved and retrieved
 * Protected routes
 * Email and password signup and login
 
@@ -19,18 +19,10 @@ The app is deployed at: https://next-js-game-store.vercel.app/orders
 * Vitest test cases
 * Playwright test cases
 * Docker image
-* CI/CD pipeline (probably Github Actions)
+* CI/CD pipeline (GitHub Actions)
 * SEO work on SSR pages - home, product details
 
-### UI Features
-* Checkout without login
-* Login checkout
-  * User cart saved on Supabase
-  * User cart retrieved on login
-  * User order saved on Supabase
-  * User order listed 
-* One quantity per item
-* filtering and sorting of products on homepage
+
 ## Getting Started
 
 First, run the development server:
@@ -41,6 +33,11 @@ npm run dev
 ```
 
 #### Project will run on localhost:3000
+
+
+## Lightout results of deployed app
+![Screenshot_20260226_180037-1.png](public/Screenshot_20260226_180037-1.png)
+
 
 ### To run playwright test cases
 
