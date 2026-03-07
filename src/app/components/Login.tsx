@@ -1,12 +1,11 @@
 'use client';
 
-import {useActionState, useEffect, useState} from 'react';
+import { useActionState, useEffect, useState } from 'react';
 import useAppStore from '../../../store';
 import { createClient } from '@/utils/supabase/client';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { UserObj } from '@/utils/interface/State.ts';
-
 
 interface FormState {
   success: boolean;
@@ -83,15 +82,15 @@ const LoginDialog = () => {
 
   useEffect(() => {
     if (state.success) {
-        setLoginError(null);
+      setLoginError(null);
       handleSubmit(state)
         .then((res) => {
-          if(!!(res as {user: UserObj, session: unknown}).user) {
-              setAuthenticated(true);
-              setUser(res as UserObj);
-              toggleLoginDialog(false);
+          if (!!(res as { user: UserObj; session: unknown }).user) {
+            setAuthenticated(true);
+            setUser(res as UserObj);
+            toggleLoginDialog(false);
           } else {
-              setLoginError('Invalid credentials');
+            setLoginError('Invalid credentials');
           }
         })
         .catch((err) => console.log(err));
@@ -179,7 +178,7 @@ const LoginDialog = () => {
             </Link>
           </p>
           {isPending && <p>Authenticating...</p>}
-            {loginError && <p className="text-red-700">{loginError}</p>}
+          {loginError && <p className='text-red-700'>{loginError}</p>}
         </form>
       )}
     </article>
